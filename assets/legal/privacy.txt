@@ -1,0 +1,25 @@
+WAVR — Privacy & Legal Notice
+
+Wavr is a free, open-source, offline-first music player.
+It does not collect, store, or transmit any personal data
+to external servers owned by its developer.
+
+All data (playlists, track metadata, preferences) is stored
+exclusively on your device using local SQLite and SharedPreferences.
+
+Wavr resolves audio streams from third-party platforms
+(YouTube, SoundCloud, Audius, Jamendo, etc.). Your use of
+those platforms remains subject to their own terms of service.
+
+Wavr does not sell advertising space or user data.
+No analytics SDK is included in this application.
+
+Downloaded audio files are stored locally for personal use only.
+Redistribution of downloaded content may violate copyright law
+in your jurisdiction. You are solely responsible for how you
+use downloaded content.
+
+Wavr is provided "as is" without warranty of any kind.
+The developer is not liable for any damages arising from its use.
+
+Contact: see app credentials for developer information.

@@ -1,0 +1,8 @@
+1. Generate the code
+Once Flutter is set up, run this once from wavr/ to generate the .freezed.dart and .g.dart files:
+>>> dart run build_runner build --delete-conflicting-outputs
+>>> flutter pub get
+
+2. Add your credentials
+Open lib/core/constants/app_credentials.dart and replace the placeholder values with your actual API keys and credentials. Follow the instructions in the comments at the top of that file to get the necessary keys from each service (Spotify, Jamendo, Last.fm, SoundCloud, MusicBrainz). Make sure tonever hardcode credentials anywhere else in the codebase. This is the only file where API keys and credentials should live.
+

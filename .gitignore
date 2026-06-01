@@ -1,0 +1,125 @@
+# ============================================
+# Flutter / Dart
+# ============================================
+
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub/
+.pub-cache/
+build/
+
+# Generated
+*.g.dart
+*.freezed.dart
+
+# Coverage
+coverage/
+
+# ============================================
+# Android
+# ============================================
+
+android/.gradle/
+android/captures/
+android/local.properties
+
+*.keystore
+*.jks
+
+# Build outputs
+android/app/build/
+android/build/
+
+# ============================================
+# iOS
+# ============================================
+
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+
+# Xcode
+ios/Runner.xcworkspace/
+ios/DerivedData/
+
+# ============================================
+# macOS
+# ============================================
+
+macos/Pods/
+macos/Flutter/ephemeral/
+
+# ============================================
+# Linux
+# ============================================
+
+linux/flutter/ephemeral/
+
+# ============================================
+# Windows
+# ============================================
+
+windows/flutter/ephemeral/
+
+# ============================================
+# Web
+# ============================================
+
+web/.dart_tool/
+
+# ============================================
+# VS Code
+# ============================================
+
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+
+# ============================================
+# JetBrains / Android Studio
+# ============================================
+
+.idea/
+*.iml
+
+# ============================================
+# Logs
+# ============================================
+
+*.log
+
+# ============================================
+# Environment files
+# ============================================
+
+.env
+.env.*
+!.env.example
+
+# ============================================
+# Temporary files
+# ============================================
+
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# ============================================
+# Generated APK/AAB
+# ============================================
+
+*.apk
+*.aab
+
+# ============================================
+# Firebase (if added later)
+# ============================================
+
+google-services.json
+GoogleService-Info.plist

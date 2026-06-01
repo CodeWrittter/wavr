@@ -1,0 +1,130 @@
+name: wavr
+description: "Offline-first music player — import, resolve, download & play."
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  uuid: ^4.4.0
+  url_launcher: ^6.3.0
+
+  # ── State Management ──────────────────────────────
+  flutter_riverpod: ^3.3.2-dev.2
+  riverpod_annotation: ^4.0.3-dev.2
+
+  # ── Navigation ────────────────────────────────────
+  go_router: ^17.2.3
+
+  # ── Audio Playback ────────────────────────────────
+  just_audio: ^0.10.5
+  just_audio_background: ^0.0.1-beta.12
+  audio_service: ^0.18.14
+  audio_session: ^0.2.3
+
+  # ── Networking ────────────────────────────────────
+  dio: ^5.4.3
+  connectivity_plus: ^7.1.1
+
+  # ── YouTube / YT Music resolution ─────────────────
+  youtube_explode_dart: ^3.1.0
+
+  # ── Local Database ────────────────────────────────
+  sqflite: ^2.3.3
+  path: ^1.9.0
+  path_provider: ^2.1.3
+
+  # ── Lightweight Settings ──────────────────────────
+  shared_preferences: ^2.2.3
+
+  # ── Models / Serialization ────────────────────────
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.12.0
+
+  # ── ID3 Tags & Metadata ───────────────────────────
+  # metadata_god: ^1.1.0
+
+  # ── Lyrics ────────────────────────────────────────
+  # lrc: ^0.0.1
+
+  # ── File Picking (.txt import) ────────────────────
+  # file_picker: ^11.0.2
+
+  # ── Permissions ───────────────────────────────────
+  permission_handler: ^12.0.2
+
+  # ── Notifications (download progress) ────────────
+  flutter_local_notifications: ^21.0.0
+
+  # ── Background Tasks (playlist sync) ─────────────
+  workmanager: ^0.9.0+3
+
+  # ── Dependency Injection ──────────────────────────
+  get_it: ^9.2.1
+
+  # ── HTML Parsing (SoundCloud / Deezer scraping) ───
+  html: ^0.15.4
+
+  # ── Fuzzy Matching (track resolution scoring) ─────
+  string_similarity: ^2.0.0
+
+  # ── Image Caching ─────────────────────────────────
+  cached_network_image: ^3.3.1
+
+  # ── UI Extras ─────────────────────────────────────
+  flutter_svg: ^2.0.10+1
+  shimmer: ^3.0.0              # loading skeletons
+  animations: ^2.0.11          # page transitions
+  sleek_circular_slider: ^2.0.1 # download progress ring
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # ── Code Generation ───────────────────────────────
+  build_runner: ^2.4.9
+  freezed: ^3.2.6-dev.1
+  json_serializable: ^6.8.0
+  riverpod_generator: ^4.0.4-dev.3
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    # - assets/icons/
+    - assets/fonts/
+    - assets/legal/
+    # - assets/placeholders/
+
+  fonts:
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Outfit-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Outfit-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Outfit-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Outfit-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Outfit-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Outfit-Black.ttf
+          weight: 900
+
+    - family: JetBrains Mono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono-Light.ttf
+          weight: 300
+        - asset: assets/fonts/JetBrainsMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/JetBrainsMono-Medium.ttf
+          weight: 500
