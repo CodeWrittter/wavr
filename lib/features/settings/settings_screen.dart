@@ -951,7 +951,7 @@ class _PickerModal extends StatelessWidget {
           ],
         ),
       ),
-    ),
+    );
   }
 }
 
