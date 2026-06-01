@@ -32,7 +32,7 @@ class RecentSearchItem extends StatelessWidget {
               ),
               child: Icon(
                 Icons.search_rounded,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha:  0.3),
                 size:  18,
               ),
             ),
@@ -58,7 +58,7 @@ class RecentSearchItem extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: Icon(
                   Icons.close_rounded,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                   size:  16,
                 ),
               ),

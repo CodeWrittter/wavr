@@ -24,8 +24,8 @@ class TxtFileDropState extends State<TxtFileDrop> {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: _fileName != null
-              ? AppColors.theme.withOpacity(0.4)
-              : AppColors.theme.withOpacity(0.2),
+              ? AppColors.theme.withValues(alpha:  0.4)
+              : AppColors.theme.withValues(alpha:  0.2),
           width: 1.5,
           style: BorderStyle.solid,
         ),
@@ -38,7 +38,7 @@ class TxtFileDropState extends State<TxtFileDrop> {
             width:  56,
             height: 56,
             decoration: BoxDecoration(
-              color: AppColors.theme.withOpacity(0.1),
+              color: AppColors.theme.withValues(alpha:  0.1),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(
@@ -70,7 +70,7 @@ class TxtFileDropState extends State<TxtFileDrop> {
               style: TextStyle(
                 fontFamily: AppFonts.jetbrainsMono,
                 fontSize:   11,
-                color: Colors.white.withOpacity(0.4),
+                color: Colors.white.withValues(alpha:  0.4),
               ),
             ),
             const SizedBox(height: 4),
@@ -80,7 +80,7 @@ class TxtFileDropState extends State<TxtFileDrop> {
                 style: TextStyle(
                   fontFamily: AppFonts.jetbrainsMono,
                   fontSize:   11,
-                  color: Colors.white.withOpacity(0.4),
+                  color: Colors.white.withValues(alpha:  0.4),
                 ),
                 children: const [
                   TextSpan(text: 'Format: '),
@@ -127,12 +127,12 @@ class TxtFileDropState extends State<TxtFileDrop> {
                     TextSpan(
                       text:  " — God's Plan\n",
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.7)),
+                          color: Colors.white.withValues(alpha:  0.7)),
                     ),
                     TextSpan(
                       text:  'Last last',
                       style:
-                          TextStyle(color: Colors.white.withOpacity(0.7)),
+                          TextStyle(color: Colors.white.withValues(alpha:  0.7)),
                     ),
                     const TextSpan(
                       text:  ' — ',
@@ -150,12 +150,12 @@ class TxtFileDropState extends State<TxtFileDrop> {
                     TextSpan(
                       text:  ' — 8ème Merveille\n',
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.7)),
+                          color: Colors.white.withValues(alpha:  0.7)),
                     ),
                     TextSpan(
                       text:  '…',
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.25)),
+                          color: Colors.white.withValues(alpha:  0.25)),
                     ),
                   ],
                 ),
@@ -167,7 +167,7 @@ class TxtFileDropState extends State<TxtFileDrop> {
               style: TextStyle(
                 fontFamily: AppFonts.jetbrainsMono,
                 fontSize:   11,
-                color: Colors.white.withOpacity(0.45),
+                color: Colors.white.withValues(alpha:  0.45),
               ),
             ),
         ],

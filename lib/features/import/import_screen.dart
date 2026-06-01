@@ -28,7 +28,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
 
   // file tab
   String? _fileTxtContent;
-  String? _fileName;
+  // String? _fileName;
   final _fileDropKey = GlobalKey<TxtFileDropState>();
 
   // manual tab
@@ -61,12 +61,12 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
                         color: AppColors.surface,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.07),
+                          color: Colors.white.withValues(alpha:  0.07),
                         ),
                       ),
                       child: Icon(
                         Icons.chevron_left_rounded,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha:  0.7),
                         size: 22,
                       ),
                     ),
@@ -131,7 +131,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
                       onFilePicked: (content, name) {
                         setState(() {
                           _fileTxtContent = content;
-                          _fileName       = name;
+                          // _fileName       = name;
                         });
                       },
                     ),
@@ -171,7 +171,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
         );
       case _ImportTab.file:
         if (_fileTxtContent == null) {
-          // _fileDropKey.currentState?.pick();
+          _fileDropKey.currentState?.pick();
           return;
         }
         _showProgressModal(
@@ -261,14 +261,14 @@ class _LinkTab extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surface,
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: Colors.white.withOpacity(0.07)),
+            border: Border.all(color: Colors.white.withValues(alpha:  0.07)),
           ),
           child: Row(
             children: [
               const SizedBox(width: 14),
               Icon(
                 Icons.link_rounded,
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha:  0.25),
                 size: 18,
               ),
               const SizedBox(width: 10),
@@ -278,14 +278,14 @@ class _LinkTab extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize:   12,
-                    color: Colors.white.withOpacity(0.8),
+                    color: Colors.white.withValues(alpha:  0.8),
                   ),
                   decoration: InputDecoration(
                     hintText: 'Paste playlist or album URL...',
                     hintStyle: TextStyle(
                       fontFamily: AppFonts.jetbrainsMono,
                       fontSize:   12,
-                      color: Colors.white.withOpacity(0.25),
+                      color: Colors.white.withValues(alpha:  0.25),
                     ),
                     border:         InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(
@@ -388,7 +388,7 @@ class _RecentlyImported extends StatelessWidget {
             fontSize:      11,
             fontWeight:    FontWeight.w700,
             letterSpacing: 0.12,
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withValues(alpha:  0.3),
           ),
         ),
         const SizedBox(height: 12),
@@ -450,7 +450,7 @@ class _RecentRow extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize:   10,
-                    color: Colors.white.withOpacity(0.35),
+                    color: Colors.white.withValues(alpha:  0.35),
                   ),
                 ),
               ],
@@ -458,7 +458,7 @@ class _RecentRow extends StatelessWidget {
           ),
           Icon(
             Icons.chevron_right_rounded,
-            color: Colors.white.withOpacity(0.25),
+            color: Colors.white.withValues(alpha:  0.25),
             size: 18,
           ),
         ],
@@ -496,7 +496,7 @@ class _ActionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color:       AppColors.theme.withOpacity(0.25),
+              color:       AppColors.theme.withValues(alpha:  0.25),
               blurRadius:  20,
               offset:      const Offset(0, 6),
             ),
@@ -554,7 +554,7 @@ class _TabBtn extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: active
                   ? AppColors.surfaceDeep
-                  : Colors.white.withOpacity(0.45),
+                  : Colors.white.withValues(alpha:  0.45),
             ),
           ),
         ),
@@ -605,7 +605,7 @@ class _ImportProgressModal extends ConsumerWidget {
             width:  36,
             height: 4,
             decoration: BoxDecoration(
-              color:        Colors.white.withOpacity(0.15),
+              color:        Colors.white.withValues(alpha:  0.15),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -682,7 +682,7 @@ class _ImportProgressModal extends ConsumerWidget {
               style: TextStyle(
                 fontFamily: AppFonts.jetbrainsMono,
                 fontSize:   11,
-                color: Colors.white.withOpacity(0.4),
+                color: Colors.white.withValues(alpha:  0.4),
               ),
             ),
           ],
@@ -717,7 +717,7 @@ class _StepRow extends StatelessWidget {
     if (isError)     iconColor = AppColors.error;
     else if (done)   iconColor = AppColors.theme3;
     else if (active) iconColor = AppColors.theme;
-    else             iconColor = Colors.white.withOpacity(0.2);
+    else             iconColor = Colors.white.withValues(alpha:  0.2);
 
     return Row(
       children: [
@@ -725,7 +725,7 @@ class _StepRow extends StatelessWidget {
           width:  38,
           height: 38,
           decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.1),
+            color: iconColor.withValues(alpha:  0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(icon, color: iconColor, size: 18),
@@ -743,7 +743,7 @@ class _StepRow extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: active || done
                       ? Colors.white
-                      : Colors.white.withOpacity(0.3),
+                      : Colors.white.withValues(alpha:  0.3),
                 ),
               ),
               if (subtitle != null) ...[
@@ -753,7 +753,7 @@ class _StepRow extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize:   10,
-                    color: Colors.white.withOpacity(0.4),
+                    color: Colors.white.withValues(alpha:  0.4),
                   ),
                 ),
               ],

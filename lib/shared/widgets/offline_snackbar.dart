@@ -87,14 +87,14 @@ class _OfflineSnackbarState extends ConsumerState<OfflineSnackbar>
             padding: const EdgeInsets.symmetric(
                 horizontal: 18, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.surface.withOpacity(0.95),
+              color: AppColors.surface.withValues(alpha:  0.95),
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha:  0.1),
               ),
               boxShadow: [
                 BoxShadow(
-                  color:      Colors.black.withOpacity(0.4),
+                  color:      Colors.black.withValues(alpha:  0.4),
                   blurRadius: 16,
                   offset:     const Offset(0, 4),
                 ),

@@ -58,7 +58,7 @@ class SettingsScreen extends ConsumerWidget {
                       style: TextStyle(
                         fontFamily: AppFonts.jetbrainsMono,
                         fontSize:   11,
-                        color: Colors.white.withOpacity(0.3),
+                        color: Colors.white.withValues(alpha:  0.3),
                       ),
                     ),
                   ],
@@ -109,7 +109,7 @@ class SettingsScreen extends ConsumerWidget {
                         subtitle: 'Link, file (.txt) or manual list',
                         trailing: Icon(
                           Icons.chevron_right_rounded,
-                          color: Colors.white.withOpacity(0.25),
+                          color: Colors.white.withValues(alpha:  0.25),
                           size: 18,
                         ),
                         onTap: () => Navigator.of(context).push(
@@ -128,7 +128,7 @@ class SettingsScreen extends ConsumerWidget {
                         subtitle: _localFolderSubtitle(ref),
                         trailing: Icon(
                           Icons.chevron_right_rounded,
-                          color: Colors.white.withOpacity(0.25),
+                          color: Colors.white.withValues(alpha:  0.25),
                           size: 18,
                         ),
                         onTap: () =>
@@ -172,7 +172,7 @@ class SettingsScreen extends ConsumerWidget {
                                 style: TextStyle(
                                   fontFamily: AppFonts.jetbrainsMono,
                                   fontSize:   12,
-                                  color: Colors.white.withOpacity(0.35),
+                                  color: Colors.white.withValues(alpha:  0.35),
                                 ),
                               ),
                               loading: () => const SizedBox.shrink(),
@@ -181,7 +181,7 @@ class SettingsScreen extends ConsumerWidget {
                             const SizedBox(width: 4),
                             Icon(
                               Icons.chevron_right_rounded,
-                              color: Colors.white.withOpacity(0.25),
+                              color: Colors.white.withValues(alpha:  0.25),
                               size: 18,
                             ),
                           ],
@@ -226,7 +226,7 @@ class SettingsScreen extends ConsumerWidget {
                                 style: TextStyle(
                                   fontFamily: AppFonts.jetbrainsMono,
                                   fontSize:   12,
-                                  color: Colors.white.withOpacity(0.35),
+                                  color: Colors.white.withValues(alpha:  0.35),
                                 ),
                               ),
                               loading: () => const SizedBox.shrink(),
@@ -235,7 +235,7 @@ class SettingsScreen extends ConsumerWidget {
                             const SizedBox(width: 4),
                             Icon(
                               Icons.chevron_right_rounded,
-                              color: Colors.white.withOpacity(0.25),
+                              color: Colors.white.withValues(alpha:  0.25),
                               size: 18,
                             ),
                           ],
@@ -287,13 +287,13 @@ class SettingsScreen extends ConsumerWidget {
                               style: TextStyle(
                                 fontFamily: AppFonts.jetbrainsMono,
                                 fontSize:   12,
-                                color: Colors.white.withOpacity(0.35),
+                                color: Colors.white.withValues(alpha:  0.35),
                               ),
                             ),
                             const SizedBox(width: 4),
                             Icon(
                               Icons.chevron_right_rounded,
-                              color: Colors.white.withOpacity(0.25),
+                              color: Colors.white.withValues(alpha:  0.25),
                               size: 18,
                             ),
                           ],
@@ -317,14 +317,14 @@ class SettingsScreen extends ConsumerWidget {
                                 color:        AppColors.theme,
                                 borderRadius: BorderRadius.circular(6),
                                 border: Border.all(
-                                  color: Colors.white.withOpacity(0.1),
+                                  color: Colors.white.withValues(alpha:  0.1),
                                 ),
                               ),
                             ),
                             const SizedBox(width: 6),
                             Icon(
                               Icons.chevron_right_rounded,
-                              color: Colors.white.withOpacity(0.25),
+                              color: Colors.white.withValues(alpha:  0.25),
                               size: 18,
                             ),
                           ],
@@ -401,7 +401,7 @@ class SettingsScreen extends ConsumerWidget {
                             ref.watch(cacheSizeProvider).when(
                               data: (size) => Text(size,
                                 style: TextStyle(fontFamily: 'JetBrains Mono',
-                                    fontSize: 12, color: Colors.white.withOpacity(0.35))),
+                                    fontSize: 12, color: Colors.white.withValues(alpha:  0.35))),
                               loading: () => const SizedBox(width: 14, height: 14,
                                   child: CircularProgressIndicator(strokeWidth: 2,
                                       color: Color(0xFFE8FF5A))),
@@ -410,7 +410,7 @@ class SettingsScreen extends ConsumerWidget {
                             const SizedBox(width: 4),
                             Icon(
                               Icons.chevron_right_rounded,
-                              color: Colors.white.withOpacity(0.25),
+                              color: Colors.white.withValues(alpha:  0.25),
                               size: 18,
                             ),
                           ],
@@ -426,7 +426,7 @@ class SettingsScreen extends ConsumerWidget {
                         subtitle: 'Free up space',
                         trailing: Icon(
                           Icons.chevron_right_rounded,
-                          color: Colors.white.withOpacity(0.25),
+                          color: Colors.white.withValues(alpha:  0.25),
                           size: 18,
                         ),
                         onTap: () => showDialog(
@@ -442,14 +442,14 @@ class SettingsScreen extends ConsumerWidget {
                               'This will delete all buffered audio. '
                               'Downloaded songs will not be affected.',
                               style: TextStyle(fontFamily: 'JetBrains Mono',
-                                  fontSize: 12, color: Colors.white.withOpacity(0.5),
+                                  fontSize: 12, color: Colors.white.withValues(alpha:  0.5),
                                   height: 1.6)),
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.pop(context),
                                 child: Text('Cancel', style: TextStyle(
                                     fontFamily: 'Outfit',
-                                    color: Colors.white.withOpacity(0.5)))),
+                                    color: Colors.white.withValues(alpha:  0.5)))),
                               TextButton(
                                 onPressed: () async {
                                   Navigator.pop(context);
@@ -493,13 +493,13 @@ class SettingsScreen extends ConsumerWidget {
                               style: TextStyle(
                                 fontFamily: AppFonts.jetbrainsMono,
                                 fontSize:   12,
-                                color: Colors.white.withOpacity(0.35),
+                                color: Colors.white.withValues(alpha:  0.35),
                               ),
                             ),
                             const SizedBox(width: 4),
                             Icon(
                               Icons.chevron_right_rounded,
-                              color: Colors.white.withOpacity(0.25),
+                              color: Colors.white.withValues(alpha:  0.25),
                               size: 18,
                             ),
                           ],
@@ -517,7 +517,7 @@ class SettingsScreen extends ConsumerWidget {
                         subtitle: 'How we handle your data',
                         trailing: Icon(
                           Icons.chevron_right_rounded,
-                          color: Colors.white.withOpacity(0.25),
+                          color: Colors.white.withValues(alpha:  0.25),
                           size: 18,
                         ),
                         onTap: () =>
@@ -623,7 +623,7 @@ class SettingsScreen extends ConsumerWidget {
   //         style: TextStyle(
   //           fontFamily: AppFonts.jetbrainsMono,
   //           fontSize:   12,
-  //           color: Colors.white.withOpacity(0.5),
+  //           color: Colors.white.withValues(alpha:  0.5),
   //           height:    1.6,
   //         ),
   //       ),
@@ -634,7 +634,7 @@ class SettingsScreen extends ConsumerWidget {
   //             'Cancel',
   //             style: TextStyle(
   //               fontFamily: AppFonts.outfit,
-  //               color: Colors.white.withOpacity(0.5),
+  //               color: Colors.white.withValues(alpha:  0.5),
   //             ),
   //           ),
   //         ),
@@ -728,7 +728,7 @@ class _LocalFolderModal extends ConsumerWidget {
               width:  36,
               height: 4,
               decoration: BoxDecoration(
-                color:        Colors.white.withOpacity(0.15),
+                color:        Colors.white.withValues(alpha:  0.15),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -786,7 +786,7 @@ class _LocalFolderModal extends ConsumerWidget {
                 style: TextStyle(
                   fontFamily: AppFonts.jetbrainsMono,
                   fontSize:   12,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                   height:    1.6,
                 ),
               ),
@@ -801,7 +801,7 @@ class _LocalFolderModal extends ConsumerWidget {
                       color: AppColors.surface,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.07),
+                        color: Colors.white.withValues(alpha:  0.07),
                       ),
                     ),
                     child: Row(
@@ -809,7 +809,7 @@ class _LocalFolderModal extends ConsumerWidget {
                         Icon(
                           Icons.folder_rounded,
                           color: AppColors.theme
-                              .withOpacity(0.7),
+                              .withValues(alpha:  0.7),
                           size: 18,
                         ),
                         const SizedBox(width: 10),
@@ -828,7 +828,7 @@ class _LocalFolderModal extends ConsumerWidget {
                           onTap: () => ref.read(_localFoldersProvider.notifier).removeAt(e.key),
                           child: Icon(
                             Icons.close_rounded,
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha:  0.3),
                             size: 16,
                           ),
                         ),
@@ -879,7 +879,7 @@ class _PickerModal extends StatelessWidget {
                 width:  36,
                 height: 4,
                 decoration: BoxDecoration(
-                  color:        Colors.white.withOpacity(0.15),
+                  color:        Colors.white.withValues(alpha:  0.15),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -911,13 +911,13 @@ class _PickerModal extends StatelessWidget {
                         margin: const EdgeInsets.only(bottom: 8),
                         decoration: BoxDecoration(
                           color: opt == current
-                              ? const Color(0xFFE8FF5A).withOpacity(0.1)
+                              ? const Color(0xFFE8FF5A).withValues(alpha:  0.1)
                               : const Color(0xFF161624),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color: opt == current
-                                ? const Color(0xFFE8FF5A).withOpacity(0.3)
-                                : Colors.white.withOpacity(0.07),
+                                ? const Color(0xFFE8FF5A).withValues(alpha:  0.3)
+                                : Colors.white.withValues(alpha:  0.07),
                           ),
                         ),
                         child: Row(
@@ -1029,7 +1029,7 @@ class _VersionModalState extends State<_VersionModal> {
               width:  36,
               height: 4,
               decoration: BoxDecoration(
-                color:        Colors.white.withOpacity(0.15),
+                color:        Colors.white.withValues(alpha:  0.15),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -1051,7 +1051,7 @@ class _VersionModalState extends State<_VersionModal> {
             style: TextStyle(
               fontFamily: AppFonts.jetbrainsMono,
               fontSize:   11,
-              color: Colors.white.withOpacity(0.35),
+              color: Colors.white.withValues(alpha:  0.35),
             ),
           ),
           const SizedBox(height: 32),
@@ -1067,7 +1067,7 @@ class _VersionModalState extends State<_VersionModal> {
               style: TextStyle(
                 fontFamily: AppFonts.jetbrainsMono,
                 fontSize:   12,
-                color: Colors.white.withOpacity(0.4),
+                color: Colors.white.withValues(alpha:  0.4),
               ),
             ),
           ] else if (_upToDate) ...[
@@ -1075,7 +1075,7 @@ class _VersionModalState extends State<_VersionModal> {
               width:  64,
               height: 64,
               decoration: BoxDecoration(
-                color:        AppColors.success.withOpacity(0.1),
+                color:        AppColors.success.withValues(alpha:  0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Icon(
@@ -1099,7 +1099,7 @@ class _VersionModalState extends State<_VersionModal> {
               width:  64,
               height: 64,
               decoration: BoxDecoration(
-                color:        AppColors.theme.withOpacity(0.1),
+                color:        AppColors.theme.withValues(alpha:  0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Icon(
@@ -1199,7 +1199,7 @@ class _PrivacyModalState extends State<_PrivacyModal> {
               width:  36,
               height: 4,
               decoration: BoxDecoration(
-                color:        Colors.white.withOpacity(0.15),
+                color:        Colors.white.withValues(alpha:  0.15),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -1229,7 +1229,7 @@ class _PrivacyModalState extends State<_PrivacyModal> {
                       style: TextStyle(
                         fontFamily: AppFonts.jetbrainsMono,
                         fontSize:   12,
-                        color: Colors.white.withOpacity(0.55),
+                        color: Colors.white.withValues(alpha:  0.55),
                         height:    1.7,
                       ),
                     ),

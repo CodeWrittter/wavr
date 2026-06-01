@@ -15,13 +15,13 @@ class DonationCard extends StatelessWidget {
           begin: Alignment.topLeft,
           end:   Alignment.bottomRight,
           colors: [
-            AppColors.theme.withOpacity(0.07),
-            AppColors.theme.withOpacity(0.02),
+            AppColors.theme.withValues(alpha:  0.07),
+            AppColors.theme.withValues(alpha:  0.02),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: AppColors.theme.withOpacity(0.2),
+          color: AppColors.theme.withValues(alpha:  0.2),
         ),
       ),
       padding: const EdgeInsets.all(20),
@@ -51,7 +51,7 @@ class DonationCard extends StatelessWidget {
             style: TextStyle(
               fontFamily: AppFonts.jetbrainsMono,
               fontSize:   11,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withValues(alpha:  0.5),
               height: 1.6,
             ),
           ),
@@ -81,7 +81,7 @@ class DonationCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
                 boxShadow: [
                   BoxShadow(
-                    color:      AppColors.theme.withOpacity(0.25),
+                    color:      AppColors.theme.withValues(alpha:  0.25),
                     blurRadius: 16,
                     offset:     const Offset(0, 4),
                   ),
@@ -125,9 +125,9 @@ class _MethodChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.06),
+        color: Colors.white.withValues(alpha:  0.06),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha:  0.1)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -171,7 +171,7 @@ class _DonationModal extends StatelessWidget {
               width:  36,
               height: 4,
               decoration: BoxDecoration(
-                color:        Colors.white.withOpacity(0.15),
+                color:        Colors.white.withValues(alpha:  0.15),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -183,10 +183,10 @@ class _DonationModal extends StatelessWidget {
             width:  72,
             height: 72,
             decoration: BoxDecoration(
-              color:        AppColors.theme.withOpacity(0.1),
+              color:        AppColors.theme.withValues(alpha:  0.1),
               borderRadius: BorderRadius.circular(22),
               border: Border.all(
-                color: AppColors.theme.withOpacity(0.2),
+                color: AppColors.theme.withValues(alpha:  0.2),
               ),
             ),
             child: const Center(
@@ -211,7 +211,7 @@ class _DonationModal extends StatelessWidget {
             style: TextStyle(
               fontFamily: AppFonts.jetbrainsMono,
               fontSize:   11,
-              color: Colors.white.withOpacity(0.35),
+              color: Colors.white.withValues(alpha:  0.35),
             ),
           ),
           const SizedBox(height: 24),
@@ -224,7 +224,7 @@ class _DonationModal extends StatelessWidget {
               color:        AppColors.surface,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: Colors.white.withOpacity(0.07),
+                color: Colors.white.withValues(alpha:  0.07),
               ),
             ),
             child: Column(
@@ -236,7 +236,7 @@ class _DonationModal extends StatelessWidget {
                       width:  40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: AppColors.theme.withOpacity(0.1),
+                        color: AppColors.theme.withValues(alpha:  0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Center(
@@ -263,7 +263,7 @@ class _DonationModal extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: AppFonts.jetbrainsMono,
                             fontSize:   11,
-                            color: Colors.white.withOpacity(0.4),
+                            color: Colors.white.withValues(alpha:  0.4),
                           ),
                         ),
                       ],
@@ -276,7 +276,7 @@ class _DonationModal extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize:   11,
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withValues(alpha:  0.5),
                     height:     1.6,
                   ),
                 ),

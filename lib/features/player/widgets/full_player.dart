@@ -94,7 +94,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                       height: 4,
                       margin: const EdgeInsets.only(top: 14, bottom: 6),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha:  0.2),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -119,7 +119,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                                 fontFamily: AppFonts.outfit,
                                 fontSize: 10,
                                 letterSpacing: 0.12,
-                                color: Colors.white.withOpacity(0.35),
+                                color: Colors.white.withValues(alpha:  0.35),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -129,7 +129,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                               style: TextStyle(
                                 fontFamily: AppFonts.jetbrainsMono,
                                 fontSize: 12,
-                                color: Colors.white.withOpacity(0.6),
+                                color: Colors.white.withValues(alpha:  0.6),
                               ),
                             ),
                           ],
@@ -194,10 +194,10 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 5),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
+                              color: Colors.black.withValues(alpha:  0.5),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: Colors.white.withOpacity(0.1),
+                                color: Colors.white.withValues(alpha:  0.1),
                               ),
                             ),
                             child: Row(
@@ -217,7 +217,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                                   style: TextStyle(
                                     fontFamily: AppFonts.jetbrainsMono,
                                     fontSize: 10,
-                                    color: Colors.white.withOpacity(0.6),
+                                    color: Colors.white.withValues(alpha:  0.6),
                                   ),
                                 ),
                               ],
@@ -267,7 +267,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                                 style: TextStyle(
                                   fontFamily: AppFonts.jetbrainsMono,
                                   fontSize: 14,
-                                  color: Colors.white.withOpacity(0.55),
+                                  color: Colors.white.withValues(alpha:  0.55),
                                 ),
                               ),
                             ],
@@ -305,7 +305,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                         style: TextStyle(
                           fontFamily: AppFonts.jetbrainsMono,
                           fontSize: 11,
-                          color: Colors.white.withOpacity(0.4),
+                          color: Colors.white.withValues(alpha:  0.4),
                         ),
                       ),
                       Text(
@@ -313,7 +313,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                         style: TextStyle(
                           fontFamily: AppFonts.jetbrainsMono,
                           fontSize: 11,
-                          color: Colors.white.withOpacity(0.4),
+                          color: Colors.white.withValues(alpha:  0.4),
                         ),
                       ),
                     ],
@@ -486,13 +486,13 @@ class _ArtGlowPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final p1 = Paint()
-      ..color = AppColors.theme.withOpacity(0.08)
+      ..color = AppColors.theme.withValues(alpha:  0.08)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 60);
     canvas.drawCircle(
         Offset(size.width * 0.35, size.height * 0.35), 80, p1);
 
     final p2 = Paint()
-      ..color = AppColors.glowIndigo.withOpacity(0.15)
+      ..color = AppColors.glowIndigo.withValues(alpha:  0.15)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 80);
     canvas.drawCircle(
         Offset(size.width * 0.65, size.height * 0.65), 100, p2);
@@ -527,7 +527,7 @@ class _WaveformViz extends StatelessWidget {
               ? const EdgeInsets.only(right: 5)
               : null,
           decoration: BoxDecoration(
-            color: AppColors.theme.withOpacity(opacity),
+            color: AppColors.theme.withValues(alpha:  opacity),
             borderRadius: BorderRadius.circular(3),
           ),
         );
@@ -570,7 +570,7 @@ class _PulsePlayBtn extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: AppColors.theme.withOpacity(
+                    color: AppColors.theme.withValues(alpha:  
                       (1 - (pulse1.value - 1) / 0.6).clamp(0.0, 0.3),
                     ),
                     width: 2,
@@ -590,7 +590,7 @@ class _PulsePlayBtn extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: AppColors.theme.withOpacity(
+                    color: AppColors.theme.withValues(alpha:  
                       (1 - (pulse2.value - 1) / 0.4).clamp(0.0, 0.15),
                     ),
                     width: 2,
@@ -610,7 +610,7 @@ class _PulsePlayBtn extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.theme.withOpacity(0.4),
+                    color: AppColors.theme.withValues(alpha:  0.4),
                     blurRadius: 24,
                     offset: const Offset(0, 8),
                   ),
@@ -647,9 +647,9 @@ class _IconBtn extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surface,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white.withOpacity(0.07)),
+            border: Border.all(color: Colors.white.withValues(alpha:  0.07)),
           ),
-          child: Icon(icon, color: Colors.white.withOpacity(0.55), size: 20),
+          child: Icon(icon, color: Colors.white.withValues(alpha:  0.55), size: 20),
         ),
       );
 }
@@ -669,13 +669,13 @@ class _FabBtn extends StatelessWidget {
           height: 36,
           decoration: BoxDecoration(
             color: active
-                ? AppColors.theme.withOpacity(0.15)
-                : Colors.black.withOpacity(0.55),
+                ? AppColors.theme.withValues(alpha:  0.15)
+                : Colors.black.withValues(alpha:  0.55),
             borderRadius: BorderRadius.circular(11),
             border: Border.all(
               color: active
-                  ? AppColors.theme.withOpacity(0.45)
-                  : Colors.white.withOpacity(0.15),
+                  ? AppColors.theme.withValues(alpha:  0.45)
+                  : Colors.white.withValues(alpha:  0.15),
             ),
           ),
           child: Icon(
@@ -709,7 +709,7 @@ class _CtrlBtn extends StatelessWidget {
             icon,
             color: active
                 ? AppColors.theme
-                : Colors.white.withOpacity(0.55),
+                : Colors.white.withValues(alpha:  0.55),
             size: 26,
           ),
         ),
@@ -727,14 +727,14 @@ class _ExtraBtn extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: Colors.white.withOpacity(0.35), size: 20),
+            Icon(icon, color: Colors.white.withValues(alpha:  0.35), size: 20),
             const SizedBox(height: 4),
             Text(
               label,
               style: TextStyle(
                 fontFamily: AppFonts.jetbrainsMono,
                 fontSize: 10,
-                color: Colors.white.withOpacity(0.35),
+                color: Colors.white.withValues(alpha:  0.35),
               ),
             ),
           ],

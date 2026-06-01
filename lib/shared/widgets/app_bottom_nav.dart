@@ -25,7 +25,7 @@ class AppBottomNav extends ConsumerWidget {
       decoration: BoxDecoration(
         color: AppColors.surfaceAlt,
         border: Border(
-          top: BorderSide(color: Colors.white.withOpacity(0.07)),
+          top: BorderSide(color: Colors.white.withValues(alpha:  0.07)),
         ),
       ),
       child: SafeArea(
@@ -92,7 +92,7 @@ class _NavItem extends ConsumerWidget {
           children: [
             Icon(
               isActive ? iconActive : icon,
-              color: isActive ? acc : Colors.white.withOpacity(0.3),
+              color: isActive ? acc : Colors.white.withValues(alpha:  0.3),
               size: 24,
             ),
             const SizedBox(height: 4),
@@ -102,7 +102,7 @@ class _NavItem extends ConsumerWidget {
                 fontFamily: AppFonts.outfit,
                 fontSize: 10,
                 fontWeight: FontWeight.w500,
-                color: isActive ? acc : Colors.white.withOpacity(0.3),
+                color: isActive ? acc : Colors.white.withValues(alpha:  0.3),
               ),
             ),
             const SizedBox(height: 4),

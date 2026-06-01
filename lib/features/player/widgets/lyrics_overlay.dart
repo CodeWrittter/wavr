@@ -36,7 +36,7 @@ class LyricsPanelWidget extends ConsumerWidget {
         decoration: BoxDecoration(
           color: AppColors.surfaceAlt,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.white.withOpacity(0.07)),
+          border: Border.all(color: Colors.white.withValues(alpha:  0.07)),
         ),
         padding: const EdgeInsets.fromLTRB(20, 14, 16, 18),
         child: Column(
@@ -50,7 +50,7 @@ class LyricsPanelWidget extends ConsumerWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.outfit,
                     fontSize: 12,
-                    color: Colors.white.withOpacity(0.4),
+                    color: Colors.white.withValues(alpha:  0.4),
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.05,
                   ),
@@ -63,12 +63,12 @@ class LyricsPanelWidget extends ConsumerWidget {
                     color: AppColors.surface,
                     borderRadius: BorderRadius.circular(9),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.08),
+                      color: Colors.white.withValues(alpha:  0.08),
                     ),
                   ),
                   child: Icon(
                     Icons.keyboard_arrow_down_rounded,
-                    color: Colors.white.withOpacity(0.4),
+                    color: Colors.white.withValues(alpha:  0.4),
                     size: 18,
                   ),
                 ),
@@ -90,7 +90,7 @@ class LyricsPanelWidget extends ConsumerWidget {
                         : FontWeight.w500,
                     color: isActive
                         ? Colors.white
-                        : Colors.white.withOpacity(0.35),
+                        : Colors.white.withValues(alpha:  0.35),
                     height: 1.4,
                   ),
                 ),
@@ -238,7 +238,7 @@ class _LyricsFullScreenState extends ConsumerState<LyricsFullScreen>
                                   style: TextStyle(
                                     fontFamily: AppFonts.jetbrainsMono,
                                     fontSize: 11,
-                                    color: Colors.white.withOpacity(0.45),
+                                    color: Colors.white.withValues(alpha:  0.45),
                                   ),
                                 ),
                               ],
@@ -253,12 +253,12 @@ class _LyricsFullScreenState extends ConsumerState<LyricsFullScreen>
                                   color: AppColors.surface,
                                   borderRadius: BorderRadius.circular(11),
                                   border: Border.all(
-                                    color: Colors.white.withOpacity(0.08),
+                                    color: Colors.white.withValues(alpha:  0.08),
                                   ),
                                 ),
                                 child: Icon(
                                   Icons.keyboard_arrow_down_rounded,
-                                  color: Colors.white.withOpacity(0.5),
+                                  color: Colors.white.withValues(alpha:  0.5),
                                   size: 20,
                                 ),
                               ),
@@ -290,8 +290,8 @@ class _LyricsFullScreenState extends ConsumerState<LyricsFullScreen>
                                 color: isActive
                                     ? Colors.white
                                     : isFuture
-                                        ? Colors.white.withOpacity(0.25)
-                                        : Colors.white.withOpacity(0.35),
+                                        ? Colors.white.withValues(alpha:  0.25)
+                                        : Colors.white.withValues(alpha:  0.35),
                                 height: 1.4,
                                 letterSpacing: isActive ? -0.3 : 0,
                               ),
@@ -312,7 +312,7 @@ class _LyricsFullScreenState extends ConsumerState<LyricsFullScreen>
                           style: TextStyle(
                             fontFamily: AppFonts.jetbrainsMono,
                             fontSize: 11,
-                            color: Colors.white.withOpacity(0.25),
+                            color: Colors.white.withValues(alpha:  0.25),
                           ),
                         ),
                       ),
@@ -359,7 +359,7 @@ class _GlowPainter extends CustomPainter {
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 80);
 
     // top-left purple glow
-    paint.color = AppColors.glowViolet.withOpacity(0.4);
+    paint.color = AppColors.glowViolet.withValues(alpha:  0.4);
     canvas.drawCircle(
       Offset(size.width * 0.2, size.height * 0.25),
       120,
@@ -367,7 +367,7 @@ class _GlowPainter extends CustomPainter {
     );
 
     // bottom-right subtle glow
-    paint.color = AppColors.deepViolet.withOpacity(0.3);
+    paint.color = AppColors.deepViolet.withValues(alpha:  0.3);
     canvas.drawCircle(
       Offset(size.width * 0.8, size.height * 0.6),
       100,

@@ -33,7 +33,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
           decoration: BoxDecoration(
             color: AppColors.surface,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withOpacity(0.07)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.07)),
           ),
           child: Column(
             children: [
@@ -44,7 +44,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: Colors.white.withOpacity(0.06),
+                      color: Colors.white.withValues(alpha: 0.06),
                     ),
                   ),
                 ),
@@ -57,7 +57,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
                         fontSize:   11,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.1,
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                       ),
                     ),
                     const Spacer(),
@@ -66,7 +66,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
                       style: TextStyle(
                         fontFamily: AppFonts.jetbrainsMono,
                         fontSize:   10,
-                        color: Colors.white.withOpacity(0.3),
+                        color: Colors.white.withValues(alpha: 0.3),
                       ),
                     ),
                   ],
@@ -79,7 +79,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
                 style: TextStyle(
                   fontFamily: AppFonts.jetbrainsMono,
                   fontSize:   12,
-                  color: Colors.white.withOpacity(0.8),
+                  color: Colors.white.withValues(alpha: 0.8),
                   height:     1.8,
                 ),
                 decoration: InputDecoration(
@@ -87,7 +87,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
                   hintStyle: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize:   12,
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     height:    1.8,
                   ),
                   contentPadding: const EdgeInsets.all(16),
@@ -113,7 +113,7 @@ class ManualInputSheetState extends State<ManualInputSheet> {
             style: TextStyle(
               fontFamily: AppFonts.jetbrainsMono,
               fontSize:   11,
-              color: Colors.white.withOpacity(0.35),
+              color: Colors.white.withValues(alpha: 0.35),
               height:    1.6,
             ),
             children: const [

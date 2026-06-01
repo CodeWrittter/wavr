@@ -33,7 +33,7 @@ class SettingsRow extends StatelessWidget {
               ? null
               : Border(
                   bottom: BorderSide(
-                    color: Colors.white.withOpacity(0.06),
+                    color: Colors.white.withValues(alpha:  0.06),
                   ),
                 ),
         ),
@@ -60,7 +60,7 @@ class SettingsRow extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: AppFonts.jetbrainsMono,
                       fontSize:   11,
-                      color: Colors.white.withOpacity(0.4),
+                      color: Colors.white.withValues(alpha:  0.4),
                       height: 1.4,
                     ),
                   ),
@@ -172,7 +172,7 @@ class SettingsSectionLabel extends StatelessWidget {
           fontSize:      11,
           fontWeight:    FontWeight.w700,
           letterSpacing: 0.12,
-          color: Colors.white.withOpacity(0.3),
+          color: Colors.white.withValues(alpha:  0.3),
         ),
       ),
     );
@@ -191,7 +191,7 @@ class SettingsGroup extends StatelessWidget {
       decoration: BoxDecoration(
         color:        AppColors.surfaceAlt,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.white.withOpacity(0.07)),
+        border: Border.all(color: Colors.white.withValues(alpha:  0.07)),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),

@@ -13,7 +13,7 @@ class VideoOverlay extends StatelessWidget {
       onTap: () => _showComingSoon(context),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.82),
+          color: Colors.black.withValues(alpha:  0.82),
           borderRadius: BorderRadius.circular(28),
         ),
         child: Center(
@@ -24,7 +24,7 @@ class VideoOverlay extends StatelessWidget {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: AppColors.theme.withOpacity(0.12),
+                  color: AppColors.theme.withValues(alpha:  0.12),
                   border: Border.all(
                     color: AppColors.theme,
                     width: 1.5,
@@ -43,7 +43,7 @@ class VideoOverlay extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: AppFonts.outfit,
                   fontSize: 13,
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withValues(alpha:  0.6),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -84,7 +84,7 @@ class VideoOverlay extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
           side: BorderSide(
-            color: Colors.white.withOpacity(0.1),
+            color: Colors.white.withValues(alpha:  0.1),
           ),
         ),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),

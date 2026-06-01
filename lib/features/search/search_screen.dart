@@ -185,7 +185,7 @@ class _ResultsBody extends ConsumerWidget {
               children: [
                 Icon(
                   Icons.search_off_rounded,
-                  color: Colors.white.withOpacity(0.15),
+                  color: Colors.white.withValues(alpha:  0.15),
                   size: 52,
                 ),
                 const SizedBox(height: 14),
@@ -194,7 +194,7 @@ class _ResultsBody extends ConsumerWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.outfit,
                     fontSize:   15,
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withValues(alpha:  0.3),
                   ),
                 ),
               ],
@@ -229,7 +229,7 @@ class _ResultsBody extends ConsumerWidget {
                           )
                         : Icon(
                             Icons.music_note_rounded,
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha:  0.3),
                             size: 20,
                           ),
                   ),
@@ -269,13 +269,13 @@ class _ResultsBody extends ConsumerWidget {
                 style: TextStyle(
                   fontFamily: AppFonts.jetbrainsMono,
                   fontSize:   11,
-                  color: Colors.white.withOpacity(0.4),
+                  color: Colors.white.withValues(alpha:  0.4),
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
               trailing: Icon(
                 Icons.more_vert_rounded,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha:  0.3),
                 size: 18,
               ),
               onTap: () => ref

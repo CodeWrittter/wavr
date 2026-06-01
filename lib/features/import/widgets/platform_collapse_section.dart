@@ -43,7 +43,7 @@ class _PlatformCollapseSectionState extends State<PlatformCollapseSection>
       decoration: BoxDecoration(
         color:        AppColors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.07)),
+        border: Border.all(color: Colors.white.withValues(alpha:  0.07)),
       ),
       child: Column(
         children: [
@@ -60,7 +60,7 @@ class _PlatformCollapseSectionState extends State<PlatformCollapseSection>
                     width:  32,
                     height: 32,
                     decoration: BoxDecoration(
-                      color: AppColors.theme.withOpacity(0.1),
+                      color: AppColors.theme.withValues(alpha:  0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Icon(
@@ -89,7 +89,7 @@ class _PlatformCollapseSectionState extends State<PlatformCollapseSection>
                           style: TextStyle(
                             fontFamily: AppFonts.jetbrainsMono,
                             fontSize:   11,
-                            color: Colors.white.withOpacity(0.4),
+                            color: Colors.white.withValues(alpha:  0.4),
                           ),
                         ),
                       ],
@@ -100,7 +100,7 @@ class _PlatformCollapseSectionState extends State<PlatformCollapseSection>
                     duration: const Duration(milliseconds: 300),
                     child: Icon(
                       Icons.keyboard_arrow_down_rounded,
-                      color: Colors.white.withOpacity(0.4),
+                      color: Colors.white.withValues(alpha:  0.4),
                       size: 20,
                     ),
                   ),
@@ -116,7 +116,7 @@ class _PlatformCollapseSectionState extends State<PlatformCollapseSection>
               children: [
                 Divider(
                   height: 1,
-                  color: Colors.white.withOpacity(0.06),
+                  color: Colors.white.withValues(alpha:  0.06),
                 ),
                 const SizedBox(height: 4),
                 ..._platforms.map((p) => _PlatformRow(platform: p)),
@@ -158,7 +158,7 @@ class _PlatformRow extends StatelessWidget {
                 fit:    BoxFit.cover,
                 errorBuilder: (_, __, ___) => Icon(
                   platform.fallback,
-                  color: Colors.white.withOpacity(0.5),
+                  color: Colors.white.withValues(alpha:  0.5),
                   size: 18,
                 ),
               ),
@@ -184,7 +184,7 @@ class _PlatformRow extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize:   10,
-                    color: Colors.white.withOpacity(0.35),
+                    color: Colors.white.withValues(alpha:  0.35),
                   ),
                 ),
               ],
@@ -195,10 +195,10 @@ class _PlatformRow extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
-                color: AppColors.theme.withOpacity(0.1),
+                color: AppColors.theme.withValues(alpha:  0.1),
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
-                  color: AppColors.theme.withOpacity(0.25),
+                  color: AppColors.theme.withValues(alpha:  0.25),
                 ),
               ),
               child: const Text(

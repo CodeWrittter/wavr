@@ -31,13 +31,13 @@ class PinnedCard extends StatelessWidget {
             end: Alignment.centerRight,
             colors: [
               AppColors.surface,
-              AppColors.theme.withOpacity(0.05),
+              AppColors.theme.withValues(alpha:  0.05),
             ],
           ),
           // color: Colors.transparent,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: AppColors.theme.withOpacity(0.2),
+            color: AppColors.theme.withValues(alpha:  0.2),
           ),
         ),
         child: Row(
@@ -47,7 +47,7 @@ class PinnedCard extends StatelessWidget {
               width: 54,
               height: 54,
               decoration: BoxDecoration(
-                color: AppColors.theme.withOpacity(0.12),
+                color: AppColors.theme.withValues(alpha:  0.12),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Icon(
@@ -80,7 +80,7 @@ class PinnedCard extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: AppFonts.jetbrainsMono,
                       fontSize: 12,
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha:  0.5),
                     ),
                   ),
                 ],
@@ -89,7 +89,7 @@ class PinnedCard extends StatelessWidget {
             // pin icon
             Icon(
               Icons.push_pin_rounded,
-              color: AppColors.theme.withOpacity(0.7),
+              color: AppColors.theme.withValues(alpha:  0.7),
               size: 18,
             ),
           ],

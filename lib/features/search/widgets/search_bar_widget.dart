@@ -33,14 +33,14 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.white.withOpacity(0.07)),
+        border: Border.all(color: Colors.white.withValues(alpha:  0.07)),
       ),
       child: Row(
         children: [
           const SizedBox(width: 14),
           Icon(
             Icons.search_rounded,
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withValues(alpha:  0.3),
             size: 20,
           ),
           const SizedBox(width: 10),
@@ -59,7 +59,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 hintStyle: TextStyle(
                   fontFamily: AppFonts.outfit,
                   fontSize:   14,
-                  color:      Colors.white.withOpacity(0.3),
+                  color:      Colors.white.withValues(alpha:  0.3),
                   fontWeight: FontWeight.w400,
                 ),
                 border:         InputBorder.none,
@@ -77,7 +77,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Icon(
                 Icons.mic_rounded,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha:  0.3),
                 size: 20,
               ),
             ),
@@ -115,7 +115,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         behavior:        SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
-          side: BorderSide(color: Colors.white.withOpacity(0.1)),
+          side: BorderSide(color: Colors.white.withValues(alpha:  0.1)),
         ),
         margin:   const EdgeInsets.fromLTRB(16, 0, 16, 16),
         duration: const Duration(seconds: 3),

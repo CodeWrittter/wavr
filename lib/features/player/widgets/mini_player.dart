@@ -25,7 +25,7 @@ class MiniPlayer extends ConsumerWidget {
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Colors.white.withOpacity(0.12)),
+          border: Border.all(color: Colors.white.withValues(alpha:  0.12)),
         ),
         child: Stack(
           children: [
@@ -36,7 +36,7 @@ class MiniPlayer extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(18),
                   gradient: LinearGradient(
                     colors: [
-                      AppColors.theme.withOpacity(0.04),
+                      AppColors.theme.withValues(alpha:  0.04),
                       Colors.transparent,
                     ],
                   ),
@@ -100,7 +100,7 @@ class MiniPlayer extends ConsumerWidget {
                           style: TextStyle(
                             fontFamily: AppFonts.jetbrainsMono,
                             fontSize: 11,
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withValues(alpha:  0.5),
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -227,7 +227,7 @@ class _MiniArtworkVizState extends State<_MiniArtworkViz>
       width: 3,
       height: h,
       decoration: BoxDecoration(
-        color: AppColors.theme.withOpacity(0.6),
+        color: AppColors.theme.withValues(alpha:  0.6),
         borderRadius: BorderRadius.circular(2),
       ),
     );
@@ -262,7 +262,7 @@ class _MiniCtrlBtn extends StatelessWidget {
             icon,
             color: highlight
                 ? Colors.white
-                : Colors.white.withOpacity(0.5),
+                : Colors.white.withValues(alpha:  0.5),
             size: 20,
           ),
         ),

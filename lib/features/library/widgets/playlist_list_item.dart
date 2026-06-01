@@ -32,7 +32,7 @@ class SourceLogo extends StatelessWidget {
           fit: BoxFit.cover,
           errorBuilder: (_, __, ___) => Icon(
             _fallbackIcon,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withValues(alpha:  0.5),
             size: size * 0.45,
           ),
         ),
@@ -118,7 +118,7 @@ class PlaylistListItem extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: AppFonts.jetbrainsMono,
                       fontSize: 11,
-                      color: Colors.white.withOpacity(0.45),
+                      color: Colors.white.withValues(alpha:  0.45),
                     ),
                   ),
                 ],
@@ -141,7 +141,7 @@ class PlaylistListItem extends StatelessWidget {
                 padding: const EdgeInsets.all(6),
                 child: Icon(
                   Icons.more_vert_rounded,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                   size: 18,
                 ),
               ),
@@ -193,7 +193,7 @@ class AlbumListItem extends StatelessWidget {
                     )
                   : Icon(
                       Icons.album_rounded,
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withValues(alpha:  0.3),
                       size: 26,
                     ),
             ),
@@ -218,7 +218,7 @@ class AlbumListItem extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: AppFonts.jetbrainsMono,
                       fontSize: 11,
-                      color: Colors.white.withOpacity(0.45),
+                      color: Colors.white.withValues(alpha:  0.45),
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -241,7 +241,7 @@ class AlbumListItem extends StatelessWidget {
                 padding: const EdgeInsets.all(6),
                 child: Icon(
                   Icons.more_vert_rounded,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                   size: 18,
                 ),
               ),

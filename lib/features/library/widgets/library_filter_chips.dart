@@ -34,7 +34,7 @@ class LibraryFilterChips extends ConsumerWidget {
                 border: isActive
                     ? null
                     : Border.all(
-                        color: Colors.white.withOpacity(0.07)),
+                        color: Colors.white.withValues(alpha:  0.07)),
               ),
               child: Text(
                 _label(f),
@@ -44,7 +44,7 @@ class LibraryFilterChips extends ConsumerWidget {
                   fontWeight: FontWeight.w600,
                   color: isActive
                       ? AppColors.surfaceDeep
-                      : Colors.white.withOpacity(0.55),
+                      : Colors.white.withValues(alpha:  0.55),
                 ),
               ),
             ),

@@ -49,12 +49,12 @@ class LibraryScreen extends ConsumerWidget {
                     color: AppColors.surface,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.07),
+                      color: Colors.white.withValues(alpha:  0.07),
                     ),
                   ),
                   child: Icon(
                     Icons.add_rounded,
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.white.withValues(alpha:  0.7),
                     size: 20,
                   ),
                 ),
@@ -129,7 +129,7 @@ class LibraryScreen extends ConsumerWidget {
                   width: 36,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha:  0.2),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -151,7 +151,7 @@ class LibraryScreen extends ConsumerWidget {
                   color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.07),
+                    color: Colors.white.withValues(alpha:  0.07),
                   ),
                 ),
                 child: TextField(
@@ -165,7 +165,7 @@ class LibraryScreen extends ConsumerWidget {
                   decoration: InputDecoration(
                     hintText: 'Playlist name…',
                     hintStyle: TextStyle(
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withValues(alpha:  0.3),
                       fontFamily: AppFonts.outfit,
                     ),
                     contentPadding: const EdgeInsets.symmetric(
@@ -383,7 +383,7 @@ class _AlbumsTab extends ConsumerWidget {
         'No albums yet',
         style: TextStyle(
           fontFamily: AppFonts.outfit,
-          color: Colors.white.withOpacity(0.3),
+          color: Colors.white.withValues(alpha:  0.3),
         ),
       ),
     );
@@ -425,7 +425,7 @@ class _ArtistsTab extends ConsumerWidget {
                 ),
                 child: Icon(
                   Icons.person_rounded,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                   size: 22,
                 ),
               ),
@@ -443,7 +443,7 @@ class _ArtistsTab extends ConsumerWidget {
                 style: TextStyle(
                   fontFamily: AppFonts.jetbrainsMono,
                   fontSize: 11,
-                  color: Colors.white.withOpacity(0.4),
+                  color: Colors.white.withValues(alpha:  0.4),
                 ),
               ),
             );
@@ -478,7 +478,7 @@ class _LocalTab extends ConsumerWidget {
               'No local files yet',
               style: TextStyle(
                 fontFamily: AppFonts.outfit,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha:  0.3),
               ),
             ),
           );
@@ -535,7 +535,7 @@ class _TrackTile extends StatelessWidget {
                   )
                 : Icon(
                     Icons.music_note_rounded,
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withValues(alpha:  0.3),
                     size: 20,
                   ),
           ),
@@ -575,13 +575,13 @@ class _TrackTile extends StatelessWidget {
         style: TextStyle(
           fontFamily: AppFonts.jetbrainsMono,
           fontSize: 11,
-          color: Colors.white.withOpacity(0.4),
+          color: Colors.white.withValues(alpha:  0.4),
         ),
         overflow: TextOverflow.ellipsis,
       ),
       trailing: Icon(
         Icons.more_vert_rounded,
-        color: Colors.white.withOpacity(0.3),
+        color: Colors.white.withValues(alpha:  0.3),
         size: 18,
       ),
     );
@@ -608,7 +608,7 @@ class _SectionHeader extends StatelessWidget {
               fontSize: 11,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.12,
-              color: Colors.white.withOpacity(0.35),
+              color: Colors.white.withValues(alpha:  0.35),
             ),
           ),
           const Spacer(),
@@ -618,7 +618,7 @@ class _SectionHeader extends StatelessWidget {
               children: [
                 Icon(
                   Icons.sort_rounded,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                   size: 14,
                 ),
                 const SizedBox(width: 4),
@@ -627,7 +627,7 @@ class _SectionHeader extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: AppFonts.jetbrainsMono,
                     fontSize: 10,
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withValues(alpha:  0.3),
                   ),
                 ),
               ],
@@ -665,7 +665,7 @@ class _SortBarState extends State<_SortBar> {
             style: TextStyle(
               fontFamily: AppFonts.jetbrainsMono,
               fontSize: 11,
-              color: Colors.white.withOpacity(0.35),
+              color: Colors.white.withValues(alpha:  0.35),
             ),
           ),
           const SizedBox(width: 6),
@@ -673,7 +673,7 @@ class _SortBarState extends State<_SortBar> {
             onTap: _cycle,
             child: Icon(
               Icons.swap_vert_rounded,
-              color: Colors.white.withOpacity(0.35),
+              color: Colors.white.withValues(alpha:  0.35),
               size: 16,
             ),
           ),
@@ -720,7 +720,7 @@ class _PlaylistContextMenu extends ConsumerWidget {
               width: 36,
               height: 4,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha:  0.2),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -749,7 +749,7 @@ class _PlaylistContextMenu extends ConsumerWidget {
                       style: TextStyle(
                         fontFamily: AppFonts.jetbrainsMono,
                         fontSize: 11,
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha:  0.4),
                       ),
                     ),
                   ],
@@ -823,7 +823,7 @@ class _MenuItem extends StatelessWidget {
     final c = color ??
         (accent
             ? AppColors.theme
-            : Colors.white.withOpacity(0.75));
+            : Colors.white.withValues(alpha:  0.75));
 
     return GestureDetector(
       onTap: onTap,
@@ -890,7 +890,7 @@ class _TrackListScreen extends ConsumerWidget {
               child: Text('No tracks yet',
                 style: TextStyle(
                   fontFamily: 'Outfit',
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha:  0.3),
                 )),
             );
           }
@@ -910,7 +910,7 @@ class _TrackListScreen extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(Icons.music_note_rounded,
-                        color: Colors.white.withOpacity(0.3), size: 20),
+                        color: Colors.white.withValues(alpha:  0.3), size: 20),
                     ),
                     if (track.downloadStatus == DownloadStatus.done)
                       Positioned(
@@ -937,13 +937,13 @@ class _TrackListScreen extends ConsumerWidget {
                 subtitle: Text(track.artist,
                   style: TextStyle(
                     fontFamily: 'JetBrains Mono', fontSize: 11,
-                    color: Colors.white.withOpacity(0.4),
+                    color: Colors.white.withValues(alpha:  0.4),
                   ),
                 ),
                 onTap: () => ref.read(playerProvider.notifier)
                     .play(track, queue: tracks),
                 trailing: Icon(Icons.more_vert_rounded,
-                  color: Colors.white.withOpacity(0.3), size: 18),
+                  color: Colors.white.withValues(alpha:  0.3), size: 18),
               );
             },
           );
