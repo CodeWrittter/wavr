@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import '../../data/models/playlist.dart';
 import '../../data/models/track.dart';
 import '../../data/repositories/library_repository.dart';
+import '../player/providers/player_provider.dart';
 import '../player/widgets/mini_player.dart';
 import 'providers/library_provider.dart';
 import 'widgets/library_filter_chips.dart';

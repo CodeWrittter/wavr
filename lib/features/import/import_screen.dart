@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'providers/import_provider.dart';
 import 'widgets/platform_collapse_section.dart';
-// import 'widgets/txt_file_drop.dart';
+import 'widgets/txt_file_drop.dart';
 import 'widgets/manual_input_sheet.dart';
 import '../../services/playlist_decoder/models/decoded_track.dart';
 import '../../core/theme/app_colors.dart';
