@@ -1,11 +1,11 @@
-/// DownloadTask lives here.
-/// download_dao.dart imports from this file.
-/// This avoids the circular dependency that would arise
-/// if both files defined the same class.
-
 enum QueueStatus { pending, downloading, done, failed }
 
 class DownloadTask {
+  /// DownloadTask lives here.
+  /// download_dao.dart imports from this file.
+  /// This avoids the circular dependency that would arise
+  /// if both files defined the same class.
+
   final String      id;
   final String      trackId;
   final String      resolvedUrl;

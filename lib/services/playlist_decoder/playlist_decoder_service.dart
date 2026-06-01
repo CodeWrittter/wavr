@@ -73,12 +73,12 @@ class PlaylistDecoderService {
     if (url.contains('deezer.com'))                 return TrackSource.deezer;
     if (url.contains('music.youtube.com'))          return TrackSource.ytMusic;
     if (url.contains('youtube.com') ||
-        url.contains('youtu.be'))                   return TrackSource.ytMusic;
+        url.contains('youtu.be'))                   { return TrackSource.ytMusic; }
     if (url.contains('soundcloud.com'))             return TrackSource.soundcloud;
     if (url.contains('audius.co'))                  return TrackSource.audius;
     if (url.contains('jamendo.com'))                return TrackSource.jamendo;
     if (url.contains('wavr.app') ||
-        url.startsWith('wavr://'))                  return TrackSource.wavrShare;
+        url.startsWith('wavr://'))                  { return TrackSource.wavrShare; }
     return TrackSource.local;
   }
 }

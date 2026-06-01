@@ -67,8 +67,8 @@ class _OfflineSnackbarState extends ConsumerState<OfflineSnackbar>
       if (!next) _show();
     });
     ref.listen(offlineModeProvider, (prev, next) {
-      if (next) _show();
-      else      _hide();
+      if (next) { _show(); }
+      else      { _hide(); }
     });
 
     if (!_visible && !shouldShow) return const SizedBox.shrink();

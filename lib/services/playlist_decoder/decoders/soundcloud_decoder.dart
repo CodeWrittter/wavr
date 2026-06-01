@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:html/parser.dart' as html_parser;
 import '../models/decoded_track.dart';
 import '../../../data/models/track.dart';
 import '../../../core/constants/app_credentials.dart';

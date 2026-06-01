@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ import 'widgets/settings_row.dart';
 import 'widgets/donation_card.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_fonts.dart';
-import 'package:flutter/services.dart';
 import '../../data/repositories/settings_repository.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -176,7 +174,7 @@ class SettingsScreen extends ConsumerWidget {
                                 ),
                               ),
                               loading: () => const SizedBox.shrink(),
-                              error:   (_, __) => const SizedBox.shrink(),
+                              error:   (_, _) => const SizedBox.shrink(),
                             ),
                             const SizedBox(width: 4),
                             Icon(
@@ -206,7 +204,7 @@ class SettingsScreen extends ConsumerWidget {
                                     .toggle(),
                           ),
                           loading: () => const SizedBox.shrink(),
-                          error:   (_, __) => const SizedBox.shrink(),
+                          error:   (_, _) => const SizedBox.shrink(),
                         ),
                       ),
                       SettingsRow(
@@ -230,7 +228,7 @@ class SettingsScreen extends ConsumerWidget {
                                 ),
                               ),
                               loading: () => const SizedBox.shrink(),
-                              error:   (_, __) => const SizedBox.shrink(),
+                              error:   (_, _) => const SizedBox.shrink(),
                             ),
                             const SizedBox(width: 4),
                             Icon(
@@ -260,7 +258,7 @@ class SettingsScreen extends ConsumerWidget {
                                     .toggle(),
                           ),
                           loading: () => const SizedBox.shrink(),
-                          error:   (_, __) => const SizedBox.shrink(),
+                          error:   (_, _) => const SizedBox.shrink(),
                         ),
                         isLast: true,
                       ),
@@ -376,7 +374,7 @@ class SettingsScreen extends ConsumerWidget {
                                     .toggle(),
                           ),
                           loading: () => const SizedBox.shrink(),
-                          error:   (_, __) => const SizedBox.shrink(),
+                          error:   (_, _) => const SizedBox.shrink(),
                         ),
                         isLast: true,
                       ),
@@ -405,7 +403,7 @@ class SettingsScreen extends ConsumerWidget {
                               loading: () => const SizedBox(width: 14, height: 14,
                                   child: CircularProgressIndicator(strokeWidth: 2,
                                       color: Color(0xFFE8FF5A))),
-                              error: (_, __) => const Text('? MB'),
+                              error: (_, _) => const Text('? MB'),
                             ),
                             const SizedBox(width: 4),
                             Icon(

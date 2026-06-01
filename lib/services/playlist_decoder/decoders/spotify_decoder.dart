@@ -36,7 +36,7 @@ class SpotifyDecoder {
   Future<void> _ensureToken() async {
     if (_accessToken != null &&
         _tokenExpiry != null &&
-        DateTime.now().isBefore(_tokenExpiry!)) return;
+        DateTime.now().isBefore(_tokenExpiry!)) { return; }
 
     final res = await _dio.post(
       AppConstants.spotifyAuthUrl,
@@ -133,10 +133,10 @@ class SpotifyDecoder {
         'Unknown Artist';
 
     final albumData = t['album'] as Map<String, dynamic>?;
-    final artworkUrl = artworkOverride as String? ??
-        ((albumData?['images'] as List?)?.isNotEmpty == true
-            ? albumData!['images'][0]['url'] as String?
-            : null);
+    final artworkUrl = artworkOverride ??
+      ((albumData?['images'] as List?)?.isNotEmpty == true
+        ? albumData!['images'][0]['url'] as String?
+        : null);
     final year = yearOverride ??
         int.tryParse(
           (albumData?['release_date'] as String? ?? '').split('-').first,

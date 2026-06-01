@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import '../models/decoded_track.dart';
 import '../../../data/models/track.dart';
-import '../../../core/constants/app_credentials.dart';
 import '../../../core/constants/app_constants.dart';
 
 /// Audius public API — completely free, no auth.

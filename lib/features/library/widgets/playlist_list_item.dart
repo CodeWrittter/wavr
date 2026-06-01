@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../data/models/playlist.dart';
 import '../../../data/models/album.dart';
 import '../../../data/models/track.dart';
@@ -30,7 +29,7 @@ class SourceLogo extends StatelessWidget {
           width: size,
           height: size,
           fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => Icon(
+          errorBuilder: (_, _, _) => Icon(
             _fallbackIcon,
             color: Colors.white.withValues(alpha:  0.5),
             size: size * 0.45,

@@ -7,14 +7,12 @@ import 'package:path/path.dart' as p;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../../data/database/app_database.dart';
 import '../../data/database/daos/track_dao.dart';
-import '../../data/database/daos/download_dao.dart';
 import '../../data/models/track.dart';
 import '../track_resolver/models/resolved_track.dart';
 import 'download_queue.dart';
 import '../../core/constants/app_credentials.dart';
 import '../../core/constants/app_constants.dart';
 import 'models/download_task.dart';
-import 'dart:typed_data';
 
 /// Handles the actual file download + metadata writing.
 ///
@@ -359,22 +357,22 @@ class DownloadService {
         if (await f.exists()) artworkBytes = await f.readAsBytes();
       }
 
-      // await MetadataGod.writeMetadata(
-      //   file: filePath,
-      //   metadata: Metadata(
-      //     title:       track.title,
-      //     artist:      track.artist,
-      //     album:       track.album,
-      //     year:        track.year,
-      //     trackNumber: track.trackNumber,
-      //     picture: artworkBytes != null
-      //         ? Picture(
-      //             data:     Uint8List.fromList(artworkBytes),
-      //             mimeType: 'image/jpeg',
-      //           )
-      //         : null,
-      //   ),
-      // );
+      await MetadataGod.writeMetadata(
+        file: filePath,
+        metadata: Metadata(
+          title:       track.title,
+          artist:      track.artist,
+          album:       track.album,
+          year:        track.year,
+          trackNumber: track.trackNumber,
+          picture: artworkBytes != null
+              ? Picture(
+                  data:     Uint8List.fromList(artworkBytes),
+                  mimeType: 'image/jpeg',
+                )
+              : null,
+        ),
+      );
     } catch (_) {
       // tag writing failure is non-fatal
       // the audio file is still usable

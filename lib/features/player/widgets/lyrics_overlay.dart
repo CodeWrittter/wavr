@@ -274,7 +274,7 @@ class _LyricsFullScreenState extends ConsumerState<LyricsFullScreen>
                           padding: const EdgeInsets.fromLTRB(28, 40, 28, 80),
                           itemCount: widget.lines.length,
                           itemBuilder: (_, i) {
-                            final isPast   = i < activeIndex;
+                            // final isPast   = i < activeIndex;
                             final isActive = i == activeIndex;
                             final isFuture = i > activeIndex;
 

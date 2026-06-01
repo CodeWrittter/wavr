@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../data/models/track.dart';
-import '../../../data/repositories/library_repository.dart';
 import '../../library/providers/library_provider.dart';
 
 // ── Search query ───────────────────────────────────────────────────────────

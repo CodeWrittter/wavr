@@ -156,7 +156,7 @@ class _PlatformRow extends StatelessWidget {
                 width:  36,
                 height: 36,
                 fit:    BoxFit.cover,
-                errorBuilder: (_, __, ___) => Icon(
+                errorBuilder: (_, _, _) => Icon(
                   platform.fallback,
                   color: Colors.white.withValues(alpha:  0.5),
                   size: 18,

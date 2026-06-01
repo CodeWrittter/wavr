@@ -28,7 +28,7 @@ class DeezerDecoder {
     while (nextUrl != null) {
       final res = await _dio.get(nextUrl);
       final items = res.data['data'] as List;
-      for (final t in items) tracks.add(_mapTrack(t));
+      for (final t in items) { tracks.add(_mapTrack(t)); }
       nextUrl = res.data['next'] as String?;
     }
     return tracks;

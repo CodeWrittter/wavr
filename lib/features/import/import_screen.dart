@@ -714,10 +714,10 @@ class _StepRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color iconColor;
-    if (isError)     iconColor = AppColors.error;
-    else if (done)   iconColor = AppColors.theme3;
-    else if (active) iconColor = AppColors.theme;
-    else             iconColor = Colors.white.withValues(alpha:  0.2);
+    if (isError)     { iconColor = AppColors.error; }
+    else if (done)   { iconColor = AppColors.theme3; }
+    else if (active) { iconColor = AppColors.theme; }
+    else             { iconColor = Colors.white.withValues(alpha:  0.2); }
 
     return Row(
       children: [

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:math' as math;
 import '../player_screen.dart';
 import '../providers/player_provider.dart';
-import '../widgets/full_player.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_fonts.dart';
 
@@ -157,8 +156,8 @@ class MiniPlayer extends ConsumerWidget {
       PageRouteBuilder(
         opaque: false,
         transitionDuration: const Duration(milliseconds: 350),
-        pageBuilder: (_, __, ___) => const PlayerScreen(),
-        transitionsBuilder: (_, anim, __, child) => SlideTransition(
+        pageBuilder: (_, _, _) => const PlayerScreen(),
+        transitionsBuilder: (_, anim, _, child) => SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(0, 1),
             end:   Offset.zero,
@@ -204,7 +203,7 @@ class _MiniArtworkVizState extends State<_MiniArtworkViz>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _ctrl,
-      builder: (_, __) => Row(
+      builder: (_, _) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

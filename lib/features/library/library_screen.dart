@@ -255,7 +255,7 @@ class _AllTab extends ConsumerWidget {
             )),
           ),
           loading: () => const SizedBox(height: 86),
-          error:   (_, __) => const SizedBox.shrink(),
+          error:   (_, _) => const SizedBox.shrink(),
         ),
         const SizedBox(height: 10),
         // pinned — Favorites
@@ -271,7 +271,7 @@ class _AllTab extends ConsumerWidget {
             )),
           ),
           loading: () => const SizedBox(height: 86),
-          error:   (_, __) => const SizedBox.shrink(),
+          error:   (_, _) => const SizedBox.shrink(),
         ),
         const SizedBox(height: 8),
 
@@ -306,7 +306,7 @@ class _AllTab extends ConsumerWidget {
             );
           },
           loading: () => const SizedBox.shrink(),
-          error:   (_, __) => const SizedBox.shrink(),
+          error:   (_, _) => const SizedBox.shrink(),
         ),
       ],
     );

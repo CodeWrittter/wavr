@@ -388,7 +388,7 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
     Navigator.of(ctx).push(
       PageRouteBuilder(
         opaque: false,
-        pageBuilder: (_, __, ___) => LyricsFullScreen(
+        pageBuilder: (_, _, _) => LyricsFullScreen(
           lines:       _demoLines,
           trackTitle:  title,
           artistName:  artist,
@@ -474,7 +474,7 @@ class _ArtworkCanvasState extends State<_ArtworkCanvas>
           // animated waveform bars
           AnimatedBuilder(
             animation: _vizCtrl,
-            builder: (_, __) => _WaveformViz(progress: _vizCtrl.value),
+            builder: (_, _) => _WaveformViz(progress: _vizCtrl.value),
           ),
         ],
       ),
@@ -562,7 +562,7 @@ class _PulsePlayBtn extends StatelessWidget {
           // outer pulse ring
           AnimatedBuilder(
             animation: pulse1,
-            builder: (_, __) => Transform.scale(
+            builder: (_, _) => Transform.scale(
               scale: pulse1.value,
               child: Container(
                 width: 68,
@@ -582,7 +582,7 @@ class _PulsePlayBtn extends StatelessWidget {
           // inner pulse ring
           AnimatedBuilder(
             animation: pulse2,
-            builder: (_, __) => Transform.scale(
+            builder: (_, _) => Transform.scale(
               scale: pulse2.value,
               child: Container(
                 width: 68,
