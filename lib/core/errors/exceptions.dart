@@ -1,10 +1,6 @@
-/// All exceptions thrown inside Wavr services.
-/// Catch these at the provider/repository layer and
-/// convert them to [Failure] objects for the UI.
-
-// ── Network ───────────────────────────────────────────────────────────────────
-
 class NetworkException implements Exception {
+  // ── Network ───────────────────────────────────────────────────────────────────
+
   final String  message;
   final int?    statusCode;
   const NetworkException(this.message, {this.statusCode});

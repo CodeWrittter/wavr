@@ -1,8 +1,9 @@
-/// Platform-specific constants used across the app.
-/// API base URLs, limits, timeouts — nothing secret goes here,
-/// that belongs in app_credentials.dart.
-
 class AppConstants {
+
+  /// Platform-specific constants used across the app.
+  /// API base URLs, limits, timeouts — nothing secret goes here,
+  /// that belongs in app_credentials.dart.
+
   AppConstants._();
 
   // ── Network timeouts ───────────────────────────────────────────────────────

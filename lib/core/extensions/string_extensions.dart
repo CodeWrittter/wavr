@@ -51,7 +51,7 @@ extension StringExtensions on String {
     if (contains('apple'))      return 'Apple Music';
     if (contains('deezer'))     return 'Deezer';
     if (contains('youtube') ||
-        contains('youtu.be'))   return 'YouTube Music';
+        contains('youtu.be'))   { return 'YouTube Music'; }
     if (contains('soundcloud')) return 'SoundCloud';
     if (contains('audius'))     return 'Audius';
     if (contains('jamendo'))    return 'Jamendo';

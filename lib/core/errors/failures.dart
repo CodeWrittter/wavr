@@ -1,11 +1,11 @@
-/// Failures are the UI-facing equivalent of exceptions.
-/// Services throw exceptions; repositories/providers catch them
-/// and return Failure objects that the UI can render meaningfully.
-
 sealed class Failure {
   final String message;
   const Failure(this.message);
 }
+
+/// Failures are the UI-facing equivalent of exceptions.
+/// Services throw exceptions; repositories/providers catch them
+/// and return Failure objects that the UI can render meaningfully.
 
 // ── Network ───────────────────────────────────────────────────────────────────
 
