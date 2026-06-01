@@ -74,9 +74,11 @@ class PlayerState {
 
 class PlayerNotifier extends Notifier<PlayerState> {
   late final AudioPlayer _player;
+  late final Ref _ref;
 
   @override
   PlayerState build() {
+    _ref = ref;
     _player = AudioPlayer();
     _bindStreams();
     ref.onDispose(_player.dispose);
@@ -204,11 +206,14 @@ class PlayerNotifier extends Notifier<PlayerState> {
   // ── Internal ──────────────────────────────────────────────────────────────
 
   AudioSource _buildAudioSource(Track track) {
-    // prefer local file if downloaded
     if (track.localFilePath != null) {
       return AudioSource.file(track.localFilePath!);
     }
-    // fallback to resolved stream URL
+    // check offline mode
+    final offline = _ref.read(offlineModeProvider);
+    if (offline) {
+      throw Exception('Offline mode — track not downloaded');
+    }
     if (track.resolvedUrl != null) {
       return AudioSource.uri(Uri.parse(track.resolvedUrl!));
     }

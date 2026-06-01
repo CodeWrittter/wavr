@@ -108,6 +108,7 @@ class LibraryScreen extends ConsumerWidget {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
+      useSafeArea: true,
       builder: (_) => Padding(
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -246,7 +247,12 @@ class _AllTab extends ConsumerWidget {
           data: (t) => PinnedCard(
             type:       PinnedCardType.allSongs,
             trackCount: t.length,
-            onTap:      () {},
+            onTap: () => Navigator.push(context, MaterialPageRoute(
+              builder: (_) => _TrackListScreen(
+                title: 'All Songs',
+                tracksFuture: ref.read(libraryRepositoryProvider).getAllTracks(),
+              ),
+            )),
           ),
           loading: () => const SizedBox(height: 86),
           error:   (_, __) => const SizedBox.shrink(),
@@ -257,7 +263,12 @@ class _AllTab extends ConsumerWidget {
           data: (t) => PinnedCard(
             type:       PinnedCardType.favorites,
             trackCount: t.length,
-            onTap:      () {},
+            onTap: () => Navigator.push(context, MaterialPageRoute(
+              builder: (_) => _TrackListScreen(
+                title: 'Favorite Songs',
+                tracksFuture: ref.read(libraryRepositoryProvider).getFavorites(),
+              ),
+            )),
           ),
           loading: () => const SizedBox(height: 86),
           error:   (_, __) => const SizedBox.shrink(),
@@ -281,7 +292,12 @@ class _AllTab extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: PlaylistListItem(
                         playlist: p,
-                        onTap:     () {},
+                        onTap: () => Navigator.push(context, MaterialPageRoute(
+                          builder: (_) => _TrackListScreen(
+                            title: 'Favorite Songs',
+                            tracksFuture: ref.read(libraryRepositoryProvider).getFavorites(),
+                          ),
+                        )),
                         onMoreTap: () =>
                             _showPlaylistMenu(context, ref, p),
                       ),
@@ -828,6 +844,110 @@ class _MenuItem extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _TrackListScreen extends ConsumerWidget {
+  final String title;
+  final Future<List<Track>> tracksFuture;
+
+  const _TrackListScreen({
+    required this.title,
+    required this.tracksFuture,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF080810),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0F0F1A),
+        title: Text(title,
+          style: const TextStyle(
+            fontFamily: 'Outfit',
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left_rounded, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: FutureBuilder<List<Track>>(
+        future: tracksFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator(
+              color: Color(0xFFE8FF5A),
+            ));
+          }
+          final tracks = snapshot.data ?? [];
+          if (tracks.isEmpty) {
+            return Center(
+              child: Text('No tracks yet',
+                style: TextStyle(
+                  fontFamily: 'Outfit',
+                  color: Colors.white.withOpacity(0.3),
+                )),
+            );
+          }
+          return ListView.builder(
+            itemCount: tracks.length,
+            itemBuilder: (_, i) {
+              final track = tracks[i];
+              return ListTile(
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16, vertical: 4),
+                leading: Stack(
+                  children: [
+                    Container(
+                      width: 46, height: 46,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1E1E2E),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(Icons.music_note_rounded,
+                        color: Colors.white.withOpacity(0.3), size: 20),
+                    ),
+                    if (track.downloadStatus == DownloadStatus.done)
+                      Positioned(
+                        bottom: 0, right: 0,
+                        child: Container(
+                          width: 14, height: 14,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFF4CAF50),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.check_rounded,
+                              color: Colors.white, size: 9),
+                        ),
+                      ),
+                  ],
+                ),
+                title: Text(track.title,
+                  style: const TextStyle(
+                    fontFamily: 'Outfit', fontSize: 13,
+                    fontWeight: FontWeight.w600, color: Colors.white,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                subtitle: Text(track.artist,
+                  style: TextStyle(
+                    fontFamily: 'JetBrains Mono', fontSize: 11,
+                    color: Colors.white.withOpacity(0.4),
+                  ),
+                ),
+                onTap: () => ref.read(playerProvider.notifier)
+                    .play(track, queue: tracks),
+                trailing: Icon(Icons.more_vert_rounded,
+                  color: Colors.white.withOpacity(0.3), size: 18),
+              );
+            },
+          );
+        },
       ),
     );
   }

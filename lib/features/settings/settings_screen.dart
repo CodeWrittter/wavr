@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:file_picker/file_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:dio/dio.dart';
+import 'package:path_provider/path_provider.dart';
 import '../../core/constants/app_credentials.dart';
 import '../../shared/providers/offline_mode_provider.dart';
 import '../import/import_screen.dart';
@@ -18,6 +20,18 @@ import '../../data/repositories/settings_repository.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
+
+  final cacheSizeProvider = FutureProvider<String>((ref) async {
+    final dir = await getApplicationDocumentsDirectory();
+    final wavr = Directory('${dir.path}/wavr');
+    if (!await wavr.exists()) return '0 MB';
+    int total = 0;
+    await for (final f in wavr.list(recursive: true)) {
+      if (f is File) total += await f.length();
+    }
+    final mb = (total / (1024 * 1024)).toStringAsFixed(1);
+    return '$mb MB';
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -327,6 +341,35 @@ class SettingsScreen extends ConsumerWidget {
                             ),
                           ],
                         ),
+                        onTap: () => showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                            backgroundColor: const Color(0xFF0F0F1A),
+                            title: const Text('Accent Color',
+                              style: TextStyle(fontFamily: 'Outfit',
+                                  fontWeight: FontWeight.w700, color: Colors.white)),
+                            content: Wrap(
+                              spacing: 12, runSpacing: 12,
+                              children: [
+                                0xFFE8FF5A, 0xFF5AE8FF, 0xFFFF5A5A,
+                                0xFFA05AFF, 0xFF5AFF8C, 0xFFFFAA5A,
+                                0xFFFF5AA0, 0xFF5A8CFF,
+                              ].map((color) => GestureDetector(
+                                onTap: () {
+                                  ref.read(accentColorProvider.notifier).set(color);
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  width: 44, height: 44,
+                                  decoration: BoxDecoration(
+                                    color: Color(color),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                              )).toList(),
+                            ),
+                          ),
+                        ),
                       ),
                       SettingsRow(
                         icon: const RowIcon(
@@ -367,13 +410,14 @@ class SettingsScreen extends ConsumerWidget {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              '248 MB',
-                              style: TextStyle(
-                                fontFamily: AppFonts.jetbrainsMono,
-                                fontSize:   12,
-                                color: Colors.white.withOpacity(0.35),
-                              ),
+                            ref.watch(cacheSizeProvider).when(
+                              data: (size) => Text(size,
+                                style: TextStyle(fontFamily: 'JetBrains Mono',
+                                    fontSize: 12, color: Colors.white.withOpacity(0.35))),
+                              loading: () => const SizedBox(width: 14, height: 14,
+                                  child: CircularProgressIndicator(strokeWidth: 2,
+                                      color: Color(0xFFE8FF5A))),
+                              error: (_, __) => const Text('? MB'),
                             ),
                             const SizedBox(width: 4),
                             Icon(
@@ -397,7 +441,45 @@ class SettingsScreen extends ConsumerWidget {
                           color: Colors.white.withOpacity(0.25),
                           size: 18,
                         ),
-                        onTap: () => _showClearCacheDialog(context),
+                        onTap: () => showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                            backgroundColor: const Color(0xFF0F0F1A),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            title: const Text('Clear Cache', style: TextStyle(
+                                fontFamily: 'Outfit', fontSize: 17,
+                                fontWeight: FontWeight.w800, color: Colors.white)),
+                            content: Text(
+                              'This will delete all buffered audio. '
+                              'Downloaded songs will not be affected.',
+                              style: TextStyle(fontFamily: 'JetBrains Mono',
+                                  fontSize: 12, color: Colors.white.withOpacity(0.5),
+                                  height: 1.6)),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text('Cancel', style: TextStyle(
+                                    fontFamily: 'Outfit',
+                                    color: Colors.white.withOpacity(0.5)))),
+                              TextButton(
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                  final dir = await getTemporaryDirectory();
+                                  if (await dir.exists()) await dir.delete(recursive: true);
+                                  await dir.create();
+                                  ref.invalidate(cacheSizeProvider);
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(content: Text('Cache cleared')));
+                                  }
+                                },
+                                child: const Text('Clear', style: TextStyle(
+                                    fontFamily: 'Outfit', fontWeight: FontWeight.w700,
+                                    color: Color(0xFFFF5A5A)))),
+                            ],
+                          ),
+                        ),
                         isLast: true,
                       ),
                     ],
@@ -519,7 +601,7 @@ class SettingsScreen extends ConsumerWidget {
       backgroundColor: Colors.transparent,
       builder: (_) => _PickerModal(
         title:   'Crossfade',
-        options: ['0s', '1s', '2s', '3s', '5s', '8s'],
+        options: ['0s', '1s', '3s', '5s', '8s'],
         current: '${ref.read(crossfadeProvider).value ?? 3}s',
         onSelect: (v) => ref
             .read(crossfadeProvider.notifier)
@@ -530,59 +612,59 @@ class SettingsScreen extends ConsumerWidget {
 
   // ── Clear cache dialog ─────────────────────────────────────────────────
 
-  void _showClearCacheDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: AppColors.surfaceAlt,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        title: const Text(
-          'Clear Cache',
-          style: TextStyle(
-            fontFamily: AppFonts.outfit,
-            fontSize:   17,
-            fontWeight: FontWeight.w800,
-            color:      Colors.white,
-          ),
-        ),
-        content: Text(
-          'This will delete all buffered audio. '
-          'Downloaded songs will not be affected.',
-          style: TextStyle(
-            fontFamily: AppFonts.jetbrainsMono,
-            fontSize:   12,
-            color: Colors.white.withOpacity(0.5),
-            height:    1.6,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              'Cancel',
-              style: TextStyle(
-                fontFamily: AppFonts.outfit,
-                color: Colors.white.withOpacity(0.5),
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text(
-              'Clear',
-              style: TextStyle(
-                fontFamily: AppFonts.outfit,
-                fontWeight: FontWeight.w700,
-                color:      AppColors.error,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // void _showClearCacheDialog(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (_) => AlertDialog(
+  //       backgroundColor: AppColors.surfaceAlt,
+  //       shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.circular(20),
+  //       ),
+  //       title: const Text(
+  //         'Clear Cache',
+  //         style: TextStyle(
+  //           fontFamily: AppFonts.outfit,
+  //           fontSize:   17,
+  //           fontWeight: FontWeight.w800,
+  //           color:      Colors.white,
+  //         ),
+  //       ),
+  //       content: Text(
+  //         'This will delete all buffered audio. '
+  //         'Downloaded songs will not be affected.',
+  //         style: TextStyle(
+  //           fontFamily: AppFonts.jetbrainsMono,
+  //           fontSize:   12,
+  //           color: Colors.white.withOpacity(0.5),
+  //           height:    1.6,
+  //         ),
+  //       ),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () => Navigator.pop(context),
+  //           child: Text(
+  //             'Cancel',
+  //             style: TextStyle(
+  //               fontFamily: AppFonts.outfit,
+  //               color: Colors.white.withOpacity(0.5),
+  //             ),
+  //           ),
+  //         ),
+  //         TextButton(
+  //           onPressed: () => Navigator.pop(context),
+  //           child: const Text(
+  //             'Clear',
+  //             style: TextStyle(
+  //               fontFamily: AppFonts.outfit,
+  //               fontWeight: FontWeight.w700,
+  //               color:      AppColors.error,
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   // ── Version modal ──────────────────────────────────────────────────────
 

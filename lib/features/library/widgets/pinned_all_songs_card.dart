@@ -34,6 +34,7 @@ class PinnedCard extends StatelessWidget {
               AppColors.theme.withOpacity(0.05),
             ],
           ),
+          // color: Colors.transparent,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: AppColors.theme.withOpacity(0.2),
@@ -75,7 +76,7 @@ class PinnedCard extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     '$trackCount tracks'
-                    '${isFav ? '' : ' · local + loaded'}',
+                    '${isFav ? '' : ' · local + streaming'}',
                     style: TextStyle(
                       fontFamily: AppFonts.jetbrainsMono,
                       fontSize: 12,
