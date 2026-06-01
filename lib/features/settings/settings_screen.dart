@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../core/constants/app_credentials.dart';
@@ -749,11 +749,11 @@ class _LocalFolderModal extends ConsumerWidget {
               const Spacer(),
               GestureDetector(
                 onTap: () async {
-                  // final result =
-                  //     await FilePicker.getDirectoryPath();
-                  // if (result != null) {
-                  //   ref.read(_localFoldersProvider.notifier).add(result);
-                  // }
+                  final result =
+                      await FilePicker.getDirectoryPath();
+                  if (result != null) {
+                    ref.read(_localFoldersProvider.notifier).add(result);
+                  }
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -866,81 +866,92 @@ class _PickerModal extends StatelessWidget {
             BorderRadius.vertical(top: Radius.circular(28)),
       ),
       padding: const EdgeInsets.fromLTRB(24, 20, 24, 40),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Container(
-              width:  36,
-              height: 4,
-              decoration: BoxDecoration(
-                color:        Colors.white.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(2),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.6,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width:  36,
+                height: 4,
+                decoration: BoxDecoration(
+                  color:        Colors.white.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Text(
-            title,
-            style: const TextStyle(
-              fontFamily: AppFonts.outfit,
-              fontSize:   17,
-              fontWeight: FontWeight.w800,
-              color:      Colors.white,
+            const SizedBox(height: 20),
+            Text(
+              title,
+              style: const TextStyle(
+                fontFamily: AppFonts.outfit,
+                fontSize:   17,
+                fontWeight: FontWeight.w800,
+                color:      Colors.white,
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          ...options.map(
-            (opt) => GestureDetector(
-              onTap: () {
-                onSelect(opt);
-                Navigator.pop(context);
-              },
-              child: Container(
-                width:  double.infinity,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 14),
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: opt == current
-                      ? AppColors.theme.withOpacity(0.1)
-                      : AppColors.surface,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: opt == current
-                        ? AppColors.theme.withOpacity(0.3)
-                        : Colors.white.withOpacity(0.07),
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      opt,
-                      style: TextStyle(
-                        fontFamily: AppFonts.outfit,
-                        fontSize:   14,
-                        fontWeight: FontWeight.w600,
-                        color: opt == current
-                            ? AppColors.theme
-                            : Colors.white,
+            const SizedBox(height: 16),
+            Flexible(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: options.map(
+                    (opt) => GestureDetector(
+                      onTap: () {
+                        onSelect(opt);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 14),
+                        margin: const EdgeInsets.only(bottom: 8),
+                        decoration: BoxDecoration(
+                          color: opt == current
+                              ? const Color(0xFFE8FF5A).withOpacity(0.1)
+                              : const Color(0xFF161624),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: opt == current
+                                ? const Color(0xFFE8FF5A).withOpacity(0.3)
+                                : Colors.white.withOpacity(0.07),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              opt,
+                              style: TextStyle(
+                                fontFamily: 'Outfit',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: opt == current
+                                    ? const Color(0xFFE8FF5A)
+                                    : Colors.white,
+                              ),
+                            ),
+                            const Spacer(),
+                            if (opt == current)
+                              const Icon(
+                                Icons.check_rounded,
+                                color: Color(0xFFE8FF5A),
+                                size: 18,
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                    const Spacer(),
-                    if (opt == current)
-                      const Icon(
-                        Icons.check_rounded,
-                        color: AppColors.theme,
-                        size: 18,
-                      ),
-                  ],
+                  ).toList(),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    );
+    ),
   }
 }
 

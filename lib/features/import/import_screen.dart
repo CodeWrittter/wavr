@@ -29,7 +29,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
   // file tab
   String? _fileTxtContent;
   String? _fileName;
-  // final _fileDropKey = GlobalKey<TxtFileDropState>();
+  final _fileDropKey = GlobalKey<TxtFileDropState>();
 
   // manual tab
   final _manualKey = GlobalKey<ManualInputSheetState>();
@@ -125,16 +125,16 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: switch (_tab) {
                   _ImportTab.link   => _LinkTab(urlCtrl: _urlCtrl),
-                  _ImportTab.file   => _LinkTab(urlCtrl: _urlCtrl),
-                  // _ImportTab.file   => _FileTab(
-                      // fileDropKey: _fileDropKey,
-                      // onFilePicked: (content, name) {
-                      //   setState(() {
-                      //     _fileTxtContent = content;
-                      //     _fileName       = name;
-                      //   });
-                      // },
-                    // ),
+                  // _ImportTab.file   => _LinkTab(urlCtrl: _urlCtrl),
+                  _ImportTab.file   => _FileTab(
+                      fileDropKey: _fileDropKey,
+                      onFilePicked: (content, name) {
+                        setState(() {
+                          _fileTxtContent = content;
+                          _fileName       = name;
+                        });
+                      },
+                    ),
                   _ImportTab.manual => ManualInputSheet(
                       key:      _manualKey,
                       onImport: _onManualImport,
@@ -338,25 +338,25 @@ class _LinkTab extends StatelessWidget {
 
 // ── File tab ───────────────────────────────────────────────────────────────
 
-// class _FileTab extends StatelessWidget {
-//   // final GlobalKey<TxtFileDropState> fileDropKey;
-//   // final _fileDropKey = GlobalKey<TxtFileDropState>();
+class _FileTab extends StatelessWidget {
+  final GlobalKey<TxtFileDropState> fileDropKey;
+  // final _fileDropKey = GlobalKey<TxtFileDropState>();
 
-//   final void Function(String, String) onFilePicked;
+  final void Function(String, String) onFilePicked;
 
-//   const _FileTab({
-//     // required this.fileDropKey,
-//     required this.onFilePicked,
-//   });
+  const _FileTab({
+    required this.fileDropKey,
+    required this.onFilePicked,
+  });
 
-//   // @override
-//   // Widget build(BuildContext context) {
-//     // return TxtFileDrop(
-//     //   key:          fileDropKey,
-//     //   onFilePicked: onFilePicked,
-//     // );
-//   // }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return TxtFileDrop(
+      key:          fileDropKey,
+      onFilePicked: onFilePicked,
+    );
+  }
+}
 
 // ── Recently imported ──────────────────────────────────────────────────────
 

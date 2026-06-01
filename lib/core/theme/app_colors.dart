@@ -7,8 +7,8 @@ abstract final class AppColors {
   static const toggleOff    = Color(0xFF2A2A3A);
 
   // ── Brand ──────────────────────────────────────────────────────────────────
-  static const Color theme = Color(0xFF30FF4F); // Neon yellow
-  static const Color theme2 = Color(0xFFE8FF5A); // Soft green
+  static const Color theme = Color(0xFF30FF4F); // Soft green
+  static const Color theme2 = Color(0xFFE8FF5A); // Bright yellow-green
   static const Color theme3 = Color(0xFF4CAF50); // Material green
 
   // ── Backgrounds ────────────────────────────────────────────────────────────

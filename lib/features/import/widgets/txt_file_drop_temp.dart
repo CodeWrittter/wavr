@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_fonts.dart';
 
@@ -176,19 +176,19 @@ class TxtFileDropState extends State<TxtFileDrop> {
   }
 
   Future<void> pick() async {
-    // final result = await FilePicker.pickFiles(
-    //   type:           FileType.custom,
-    //   allowedExtensions: ['txt'],
-    // );
-    // if (result == null || result.files.isEmpty) return;
+    final result = await FilePicker.pickFiles(
+      type:           FileType.custom,
+      allowedExtensions: ['txt'],
+    );
+    if (result == null || result.files.isEmpty) return;
 
-    // final file = result.files.first;
-    // if (file.bytes == null) return;
+    final file = result.files.first;
+    if (file.bytes == null) return;
 
-    // final content  = String.fromCharCodes(file.bytes!);
-    // final fileName = file.name;
+    final content  = String.fromCharCodes(file.bytes!);
+    final fileName = file.name;
 
-    // setState(() => _fileName = fileName);
-    // widget.onFilePicked(content, fileName);
+    setState(() => _fileName = fileName);
+    widget.onFilePicked(content, fileName);
   }
 }
