@@ -210,7 +210,7 @@ class DownloadService {
           final query = Uri.encodeComponent(
               '${track.artist} ${track.album ?? track.title}');
           final res = await _dio.get(
-            AppConstants.musicBrainzBase + '/release/?query=$query&fmt=json&limit=1',
+            '${AppConstants.musicBrainzBase}/release/?query=$query&fmt=json&limit=1',
             options: Options(headers: {
               'User-Agent': AppCredentials.musicBrainzUserAgent,
             }),
@@ -219,7 +219,7 @@ class DownloadService {
           if (releases == null || releases.isEmpty) return null;
           final mbid = releases.first['id'] as String?;
           if (mbid == null) return null;
-          return AppConstants.coverArtBase + '/$mbid/front-500';
+          return '${AppConstants.coverArtBase}/$mbid/front-500';
         } catch (_) {
           return null;
         }
@@ -228,7 +228,7 @@ class DownloadService {
         try {
           final query = Uri.encodeComponent('${track.artist} ${track.title}');
           final res   = await _dio.get(
-            AppConstants.itunesApiBase + '/search?term=$query&media=music&limit=1',
+            '${AppConstants.itunesApiBase}/search?term=$query&media=music&limit=1',
           );
           final results = res.data['results'] as List?;
           if (results == null || results.isEmpty) return null;
@@ -245,7 +245,7 @@ class DownloadService {
         final apiKey = AppCredentials.lastFmApiKey;
         try {
           final res = await _dio.get(
-            AppConstants.lastFmBase + '/',
+            '${AppConstants.lastFmBase}/',
             queryParameters: {
               'method':  'track.getInfo',
               'api_key': apiKey,

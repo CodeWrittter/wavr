@@ -28,7 +28,7 @@ class SoundCloudDecoder {
 
   Future<Map<String, dynamic>> _resolve(String url) async {
     final res = await _dio.get(
-      AppConstants.soundcloudApiBase + '/resolve',
+      '${AppConstants.soundcloudApiBase}/resolve',
       queryParameters: {'url': url, 'client_id': _clientId},
     );
     return res.data as Map<String, dynamic>;

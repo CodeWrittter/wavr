@@ -51,7 +51,7 @@ class TrackNotFoundFailure extends Failure {
 // ── Download ──────────────────────────────────────────────────────────────────
 
 class DownloadFailure extends Failure {
-  const DownloadFailure(String message) : super(message);
+  const DownloadFailure(super.message);
 }
 
 class StoragePermissionFailure extends Failure {

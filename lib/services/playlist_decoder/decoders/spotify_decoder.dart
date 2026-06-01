@@ -61,7 +61,7 @@ class SpotifyDecoder {
 
   Future<List<DecodedTrack>> _fetchPlaylist(String id) async {
     final tracks = <DecodedTrack>[];
-    String? nextUrl = AppConstants.spotifyApiBase + '/playlists/$id/tracks?limit=' + AppConstants.spotifyPageSize.toString();
+    String? nextUrl = '${AppConstants.spotifyApiBase}/playlists/$id/tracks?limit=${AppConstants.spotifyPageSize}';
 
     while (nextUrl != null) {
       final res = await _dio.get(nextUrl, options: _authOptions);
@@ -82,7 +82,7 @@ class SpotifyDecoder {
 
     // fetch album meta first (for artwork + year)
     final albumRes = await _dio.get(
-      AppConstants.spotifyApiBase + '/albums/$id',
+      '${AppConstants.spotifyApiBase}/albums/$id',
       options: _authOptions,
     );
     final albumData = albumRes.data;
@@ -94,7 +94,7 @@ class SpotifyDecoder {
     );
     final albumName = albumData['name'] as String?;
 
-    String? nextUrl = AppConstants.spotifyApiBase + '/albums/$id/tracks?limit=50';
+    String? nextUrl = '${AppConstants.spotifyApiBase}/albums/$id/tracks?limit=50';
 
     while (nextUrl != null) {
       final res = await _dio.get(nextUrl, options: _authOptions);
@@ -113,7 +113,7 @@ class SpotifyDecoder {
 
   Future<DecodedTrack> _fetchTrack(String id) async {
     final res = await _dio.get(
-      AppConstants.spotifyApiBase + '/tracks/$id',
+      '${AppConstants.spotifyApiBase}/tracks/$id',
       options: _authOptions,
     );
     return _mapTrack(res.data);

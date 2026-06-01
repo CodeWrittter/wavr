@@ -48,7 +48,7 @@ class YoutubeResolver {
           );
           if (score >= _minScore) {
             candidates.add(_Candidate(
-              url:        AppConstants.youtubeBase + '/watch?v=${video.id.value}',
+              url:        '${AppConstants.youtubeBase}/watch?v=${video.id.value}',
               score:      score,
               title:      video.title,
               artist:     video.author,
