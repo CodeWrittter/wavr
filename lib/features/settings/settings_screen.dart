@@ -21,18 +21,6 @@ import '../../data/repositories/settings_repository.dart';
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
-  final cacheSizeProvider = FutureProvider<String>((ref) async {
-    final dir = await getApplicationDocumentsDirectory();
-    final wavr = Directory('${dir.path}/wavr');
-    if (!await wavr.exists()) return '0 MB';
-    int total = 0;
-    await for (final f in wavr.list(recursive: true)) {
-      if (f is File) total += await f.length();
-    }
-    final mb = (total / (1024 * 1024)).toStringAsFixed(1);
-    return '$mb MB';
-  });
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final audioQuality   = ref.watch(audioQualityProvider);
@@ -701,6 +689,18 @@ class _LocalFoldersNotifier extends Notifier<List<String>> {
     state = copy;
   }
 }
+
+final cacheSizeProvider = FutureProvider<String>((ref) async {
+  final dir = await getApplicationDocumentsDirectory();
+  final wavr = Directory('${dir.path}/wavr');
+  if (!await wavr.exists()) return '0 MB';
+  int total = 0;
+  await for (final f in wavr.list(recursive: true)) {
+    if (f is File) total += await f.length();
+  }
+  final mb = (total / (1024 * 1024)).toStringAsFixed(1);
+  return '$mb MB';
+});
 
 final _localFoldersProvider =
     NotifierProvider<_LocalFoldersNotifier, List<String>>(

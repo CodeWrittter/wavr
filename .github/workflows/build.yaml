@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Analyze code for issues
+        run: flutter analyze
+
       - name: Generate code
         run: dart run build_runner build
 

@@ -3,6 +3,7 @@ import 'package:just_audio/just_audio.dart';
 import '../../../data/models/track.dart';
 import '../../../data/repositories/library_repository.dart';
 import '../../library/providers/library_provider.dart';
+import '../../../providers/offline_mode_provider.dart';
 
 // ── Player state ───────────────────────────────────────────────────────────
 
