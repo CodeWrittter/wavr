@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // init metadata_god (required before any tag read/write)
-  
+  MetadataGod.initialize();
 
   // init local notifications channel
   final db    = AppDatabase();
