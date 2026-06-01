@@ -176,7 +176,7 @@ class TxtFileDropState extends State<TxtFileDrop> {
   }
 
   Future<void> pick() async {
-    final result = await FilePicker.pickFiles(
+    final result = await FilePicker.platform.pickFiles(
       type:           FileType.custom,
       allowedExtensions: ['txt'],
     );

@@ -748,7 +748,7 @@ class _LocalFolderModal extends ConsumerWidget {
               GestureDetector(
                 onTap: () async {
                   final result =
-                      await FilePicker.getDirectoryPath();
+                      await FilePicker.platform.getDirectoryPath();
                   if (result != null) {
                     ref.read(_localFoldersProvider.notifier).add(result);
                   }
