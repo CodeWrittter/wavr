@@ -52,7 +52,7 @@ dependencies:
   # lrc: ^0.0.1
 
   # ── File Picking (.txt import) ────────────────────
-  file_picker: ^11.0.2
+  file_picker: ^10.3.3
 
   # ── Permissions ───────────────────────────────────
   permission_handler: ^12.0.2
