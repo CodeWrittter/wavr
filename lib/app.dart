@@ -8,6 +8,7 @@ import 'shared/widgets/offline_snackbar.dart';
 import 'features/library/library_screen.dart';
 import 'features/search/search_screen.dart';
 import 'features/settings/settings_screen.dart';
+import 'features/splash/splash_screen.dart';
 
 class WavrApp extends StatelessWidget {
   const WavrApp({super.key});
@@ -18,7 +19,7 @@ class WavrApp extends StatelessWidget {
       title:        'Wavr',
       debugShowCheckedModeBanner: false,
       theme:        AppTheme.dark,
-      home:         const _AppShell(),
+      home:         const SplashScreen(child: _AppShell()),
     );
   }
 }

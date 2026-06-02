@@ -332,7 +332,7 @@ class SettingsScreen extends ConsumerWidget {
                           builder: (_) => AlertDialog(
                             backgroundColor: const Color(0xFF0F0F1A),
                             title: const Text('Accent Color',
-                              style: TextStyle(fontFamily: 'Outfit',
+                              style: TextStyle(fontFamily: AppFonts.outfit,
                                   fontWeight: FontWeight.w700, color: Colors.white)),
                             content: Wrap(
                               spacing: 12, runSpacing: 12,
@@ -398,7 +398,7 @@ class SettingsScreen extends ConsumerWidget {
                           children: [
                             ref.watch(cacheSizeProvider).when(
                               data: (size) => Text(size,
-                                style: TextStyle(fontFamily: 'JetBrains Mono',
+                                style: TextStyle(fontFamily: AppFonts.jetbrainsMono,
                                     fontSize: 12, color: Colors.white.withValues(alpha:  0.35))),
                               loading: () => const SizedBox(width: 14, height: 14,
                                   child: CircularProgressIndicator(strokeWidth: 2,
@@ -434,19 +434,19 @@ class SettingsScreen extends ConsumerWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             title: const Text('Clear Cache', style: TextStyle(
-                                fontFamily: 'Outfit', fontSize: 17,
+                                fontFamily: AppFonts.outfit, fontSize: 17,
                                 fontWeight: FontWeight.w800, color: Colors.white)),
                             content: Text(
                               'This will delete all buffered audio. '
                               'Downloaded songs will not be affected.',
-                              style: TextStyle(fontFamily: 'JetBrains Mono',
+                              style: TextStyle(fontFamily: AppFonts.jetbrainsMono,
                                   fontSize: 12, color: Colors.white.withValues(alpha:  0.5),
                                   height: 1.6)),
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.pop(context),
                                 child: Text('Cancel', style: TextStyle(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: AppFonts.outfit,
                                     color: Colors.white.withValues(alpha:  0.5)))),
                               TextButton(
                                 onPressed: () async {
@@ -461,7 +461,7 @@ class SettingsScreen extends ConsumerWidget {
                                   }
                                 },
                                 child: const Text('Clear', style: TextStyle(
-                                    fontFamily: 'Outfit', fontWeight: FontWeight.w700,
+                                    fontFamily: AppFonts.outfit, fontWeight: FontWeight.w700,
                                     color: Color(0xFFFF5A5A)))),
                             ],
                           ),
@@ -923,7 +923,7 @@ class _PickerModal extends StatelessWidget {
                             Text(
                               opt,
                               style: TextStyle(
-                                fontFamily: 'Outfit',
+                                fontFamily: AppFonts.outfit,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 color: opt == current

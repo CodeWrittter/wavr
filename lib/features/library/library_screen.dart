@@ -11,6 +11,8 @@ import 'widgets/pinned_all_songs_card.dart';
 import 'widgets/playlist_list_item.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_fonts.dart';
+import '../player/widgets/mini_player.dart';
+
 
 class LibraryScreen extends ConsumerWidget {
   const LibraryScreen({super.key});
@@ -105,17 +107,19 @@ class LibraryScreen extends ConsumerWidget {
     final ctrl = TextEditingController();
 
     showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
+      context:            context,
+      backgroundColor:    Colors.transparent,
       isScrollControlled: true,
-      useSafeArea: true,
-      builder: (_) => Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
+      useSafeArea:        true,
+      builder: (ctx) => AnimatedPadding(
+        duration: const Duration(milliseconds: 150),
+        curve:    Curves.easeOut,
+        padding:  EdgeInsets.only(
+          bottom: MediaQuery.of(ctx).viewInsets.bottom,
         ),
         child: Container(
           decoration: const BoxDecoration(
-            color: AppColors.surfaceAlt,
+            color: Color(0xFF0F0F1A),
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
           ),
           padding: const EdgeInsets.fromLTRB(24, 20, 24, 32),
@@ -123,40 +127,33 @@ class LibraryScreen extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // handle
               Center(
                 child: Container(
-                  width: 36,
-                  height: 4,
+                  width: 36, height: 4,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha:  0.2),
+                    color: Colors.white.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'New Playlist',
+              const Text('New Playlist',
                 style: TextStyle(
-                  fontFamily: AppFonts.outfit,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
+                  fontFamily: AppFonts.outfit, fontSize: 18,
+                  fontWeight: FontWeight.w800, color: Colors.white,
                 ),
               ),
               const SizedBox(height: 16),
-              // name input
               Container(
                 decoration: BoxDecoration(
-                  color: AppColors.surface,
+                  color: const Color(0xFF161624),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: Colors.white.withValues(alpha:  0.07),
-                  ),
+                      color: Colors.white.withOpacity(0.07)),
                 ),
                 child: TextField(
                   controller: ctrl,
-                  autofocus: true,
+                  autofocus:  true,
                   style: const TextStyle(
                     fontFamily: AppFonts.outfit,
                     fontSize: 14,
@@ -165,7 +162,7 @@ class LibraryScreen extends ConsumerWidget {
                   decoration: InputDecoration(
                     hintText: 'Playlist name…',
                     hintStyle: TextStyle(
-                      color: Colors.white.withValues(alpha:  0.3),
+                      color: Colors.white.withOpacity(0.3),
                       fontFamily: AppFonts.outfit,
                     ),
                     contentPadding: const EdgeInsets.symmetric(
@@ -175,29 +172,26 @@ class LibraryScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              // create button
               GestureDetector(
                 onTap: () async {
                   final name = ctrl.text.trim();
                   if (name.isEmpty) return;
                   await _createPlaylist(context, ref, name);
-                  if (context.mounted) Navigator.pop(context);
+                  if (ctx.mounted) Navigator.pop(ctx);
                 },
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   decoration: BoxDecoration(
-                    color: AppColors.theme,
+                    color: const Color(0xFFE8FF5A),
                     borderRadius: BorderRadius.circular(14),
                   ),
-                  child: const Text(
-                    'Create Playlist',
+                  child: const Text('Create Playlist',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: AppFonts.outfit,
-                      fontSize: 14,
+                      fontFamily: AppFonts.outfit, fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.surfaceDeep,
+                      color: Color(0xFF0A0A12),
                     ),
                   ),
                 ),
@@ -866,7 +860,7 @@ class _TrackListScreen extends ConsumerWidget {
         backgroundColor: const Color(0xFF0F0F1A),
         title: Text(title,
           style: const TextStyle(
-            fontFamily: 'Outfit',
+            fontFamily: AppFonts.outfit,
             fontWeight: FontWeight.w700,
             color: Colors.white,
           ),
@@ -876,78 +870,85 @@ class _TrackListScreen extends ConsumerWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: FutureBuilder<List<Track>>(
-        future: tracksFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator(
-              color: Color(0xFFE8FF5A),
-            ));
-          }
-          final tracks = snapshot.data ?? [];
-          if (tracks.isEmpty) {
-            return Center(
-              child: Text('No tracks yet',
-                style: TextStyle(
-                  fontFamily: 'Outfit',
-                  color: Colors.white.withValues(alpha:  0.3),
-                )),
-            );
-          }
-          return ListView.builder(
-            itemCount: tracks.length,
-            itemBuilder: (_, i) {
-              final track = tracks[i];
-              return ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 4),
-                leading: Stack(
-                  children: [
-                    Container(
-                      width: 46, height: 46,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1E1E2E),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(Icons.music_note_rounded,
-                        color: Colors.white.withValues(alpha:  0.3), size: 20),
-                    ),
-                    if (track.downloadStatus == DownloadStatus.done)
-                      Positioned(
-                        bottom: 0, right: 0,
-                        child: Container(
-                          width: 14, height: 14,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF4CAF50),
-                            shape: BoxShape.circle,
+      body: Column(
+        children: [
+          Expanded(
+            child: FutureBuilder<List<Track>>(
+            future: tracksFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator(
+                    color: Color(0xFFE8FF5A),
+                  ));
+                }
+                final tracks = snapshot.data ?? [];
+                if (tracks.isEmpty) {
+                  return Center(
+                    child: Text('No tracks yet',
+                      style: TextStyle(
+                        fontFamily: AppFonts.outfit,
+                        color: Colors.white.withValues(alpha:  0.3),
+                      )),
+                  );
+                }
+                return ListView.builder(
+                  itemCount: tracks.length,
+                  itemBuilder: (_, i) {
+                    final track = tracks[i];
+                    return ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 4),
+                      leading: Stack(
+                        children: [
+                          Container(
+                            width: 46, height: 46,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF1E1E2E),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(Icons.music_note_rounded,
+                              color: Colors.white.withValues(alpha:  0.3), size: 20),
                           ),
-                          child: const Icon(Icons.check_rounded,
-                              color: Colors.white, size: 9),
+                          if (track.downloadStatus == DownloadStatus.done)
+                            Positioned(
+                              bottom: 0, right: 0,
+                              child: Container(
+                                width: 14, height: 14,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xFF4CAF50),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(Icons.check_rounded,
+                                    color: Colors.white, size: 9),
+                              ),
+                            ),
+                        ],
+                      ),
+                      title: Text(track.title,
+                        style: const TextStyle(
+                          fontFamily: AppFonts.outfit, fontSize: 13,
+                          fontWeight: FontWeight.w600, color: Colors.white,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      subtitle: Text(track.artist,
+                        style: TextStyle(
+                          fontFamily: AppFonts.jetbrainsMono, fontSize: 11,
+                          color: Colors.white.withValues(alpha:  0.4),
                         ),
                       ),
-                  ],
-                ),
-                title: Text(track.title,
-                  style: const TextStyle(
-                    fontFamily: 'Outfit', fontSize: 13,
-                    fontWeight: FontWeight.w600, color: Colors.white,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                subtitle: Text(track.artist,
-                  style: TextStyle(
-                    fontFamily: 'JetBrains Mono', fontSize: 11,
-                    color: Colors.white.withValues(alpha:  0.4),
-                  ),
-                ),
-                onTap: () => ref.read(playerProvider.notifier)
-                    .play(track, queue: tracks),
-                trailing: Icon(Icons.more_vert_rounded,
-                  color: Colors.white.withValues(alpha:  0.3), size: 18),
-              );
-            },
-          );
-        },
+                      onTap: () => ref.read(playerProvider.notifier)
+                          .play(track, queue: tracks),
+                      trailing: Icon(Icons.more_vert_rounded,
+                        color: Colors.white.withValues(alpha:  0.3), size: 18),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          const MiniPlayer(),
+        ],
       ),
     );
   }

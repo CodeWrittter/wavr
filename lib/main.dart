@@ -12,6 +12,33 @@ void main() async {
   // init metadata_god (required before any tag read/write)
   // MetadataGod.initialize();
 
+  if (await FirstLaunch.isFirstLaunch()) {
+    await SeedData.requestStoragePermission();
+    await SeedData.seedTestTrack(db);
+    // scan and insert local files
+    final localFiles = await SeedData.scanLocalAudio();
+    final dao = TrackDao(db);
+    for (final path in localFiles) {
+      final name = p.basenameWithoutExtension(path);
+      await dao.insert(Track(
+        id:             const Uuid().v4(),
+        title:          name,
+        artist:         'Unknown',
+        source:         TrackSource.local,
+        localFilePath:  path,
+        downloadStatus: DownloadStatus.done,
+        addedAt:        DateTime.now(),
+      ));
+    }
+    await FirstLaunch.markDone();
+  }
+
+  final db = AppDatabase();
+  if (await FirstLaunch.isFirstLaunch()) {
+    await SeedData.seedTestTrack(db);
+    await FirstLaunch.markDone();
+  }
+
   // init local notifications channel
   final db    = AppDatabase();
   final queue = DownloadQueue(db: db);
