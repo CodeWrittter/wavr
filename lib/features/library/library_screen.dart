@@ -13,7 +13,6 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_fonts.dart';
 import '../player/widgets/mini_player.dart';
 
-
 class LibraryScreen extends ConsumerWidget {
   const LibraryScreen({super.key});
 
