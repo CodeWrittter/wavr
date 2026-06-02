@@ -84,10 +84,10 @@ class _SplashScreenState extends State<SplashScreen>
                 width:  100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: AppColors.theme.withOpacity(0.1),
+                  color: AppColors.theme.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(32),
                   border: Border.all(
-                    color: AppColors.theme.withOpacity(0.3),
+                    color: AppColors.theme.withValues(alpha: 0.3),
                     width: 1.5,
                   ),
                 ),
@@ -112,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen>
                 style: TextStyle(
                   fontFamily: AppFonts.jetbrainsMono,
                   fontSize:   13,
-                  color: Colors.white.withOpacity(0.4),
+                  color: Colors.white.withValues(alpha: 0.4),
                 ),
               ),
             ],

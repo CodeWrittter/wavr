@@ -75,7 +75,7 @@ class PlayerState {
 
 class PlayerNotifier extends Notifier<PlayerState> {
   late final AudioPlayer _player;
-  late final Ref _ref;
+  // late final Ref _ref;
 
   @override
   PlayerState build() {

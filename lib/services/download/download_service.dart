@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:async';
-import 'dart:typed_data';
+// import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
@@ -352,11 +352,11 @@ class DownloadService {
     String?          artworkPath,
   }) async {
     try {
-      List<int>? artworkBytes;
-      if (artworkPath != null) {
-        final f = File(artworkPath);
-        if (await f.exists()) artworkBytes = await f.readAsBytes();
-      }
+      // List<int>? artworkBytes;
+      // if (artworkPath != null) {
+      //   final f = File(artworkPath);
+      //   if (await f.exists()) artworkBytes = await f.readAsBytes();
+      // }
 
       // await MetadataGod.writeMetadata(
       //   file: filePath,

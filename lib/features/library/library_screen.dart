@@ -11,7 +11,6 @@ import 'widgets/pinned_all_songs_card.dart';
 import 'widgets/playlist_list_item.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_fonts.dart';
-import '../player/widgets/mini_player.dart';
 
 class LibraryScreen extends ConsumerWidget {
   const LibraryScreen({super.key});
@@ -130,7 +129,7 @@ class LibraryScreen extends ConsumerWidget {
                 child: Container(
                   width: 36, height: 4,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -148,7 +147,7 @@ class LibraryScreen extends ConsumerWidget {
                   color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                      color: Colors.white.withOpacity(0.07)),
+                      color: Colors.white.withValues(alpha: 0.07)),
                 ),
                 child: TextField(
                   controller: ctrl,
@@ -161,7 +160,7 @@ class LibraryScreen extends ConsumerWidget {
                   decoration: InputDecoration(
                     hintText: 'Playlist name…',
                     hintStyle: TextStyle(
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withValues(alpha: 0.3),
                       fontFamily: AppFonts.outfit,
                     ),
                     contentPadding: const EdgeInsets.symmetric(

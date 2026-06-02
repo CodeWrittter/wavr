@@ -451,10 +451,10 @@ class _ArtworkCanvasState extends State<_ArtworkCanvas>
           begin: Alignment.topLeft,
           end:   Alignment.bottomRight,
           colors: [
-            AppColors.artworkDeep1,
-            AppColors.artworkDeep2,
-            AppColors.artworkDeep3,
-            AppColors.artworkDeep4,
+            AppColors.deepNavy,
+            AppColors.deepViolet,
+            AppColors.deepOcean,
+            AppColors.deepPurple,
           ],
         ),
       ),
@@ -497,39 +497,39 @@ class _ArtGlowPainter extends CustomPainter {
   bool shouldRepaint(_ArtGlowPainter old) => false;
 }
 
-class _WaveformViz extends StatelessWidget {
-  final double progress;
-  const _WaveformViz({required this.progress});
+// class _WaveformViz extends StatelessWidget {
+//   final double progress;
+//   const _WaveformViz({required this.progress});
 
-  static const _barCount  = 9;
-  static const _baseHeights = [24.0, 60.0, 100.0, 140.0, 160.0,
-                                140.0, 100.0, 60.0, 24.0];
-  static const _delays = [0.0, 0.1, 0.2, 0.12, 0.06, 0.18, 0.08, 0.22, 0.14];
+//   static const _barCount  = 9;
+//   static const _baseHeights = [24.0, 60.0, 100.0, 140.0, 160.0,
+//                                 140.0, 100.0, 60.0, 24.0];
+//   static const _delays = [0.0, 0.1, 0.2, 0.12, 0.06, 0.18, 0.08, 0.22, 0.14];
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: List.generate(_barCount, (i) {
-        final phase = (progress + _delays[i]) % 1.0;
-        final scale = 1.0 + (math.sin(phase * math.pi) * 0.3);
-        final opacity = 0.25 + (math.sin(phase * math.pi) * 0.45);
-        return Container(
-          width: 5,
-          height: _baseHeights[i] * scale,
-          margin: i < _barCount - 1
-              ? const EdgeInsets.only(right: 5)
-              : null,
-          decoration: BoxDecoration(
-            color: AppColors.theme.withValues(alpha:  opacity),
-            borderRadius: BorderRadius.circular(3),
-          ),
-        );
-      }),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       children: List.generate(_barCount, (i) {
+//         final phase = (progress + _delays[i]) % 1.0;
+//         final scale = 1.0 + (math.sin(phase * math.pi) * 0.3);
+//         final opacity = 0.25 + (math.sin(phase * math.pi) * 0.45);
+//         return Container(
+//           width: 5,
+//           height: _baseHeights[i] * scale,
+//           margin: i < _barCount - 1
+//               ? const EdgeInsets.only(right: 5)
+//               : null,
+//           decoration: BoxDecoration(
+//             color: AppColors.theme.withValues(alpha:  opacity),
+//             borderRadius: BorderRadius.circular(3),
+//           ),
+//         );
+//       }),
+//     );
+//   }
+// }
 
 // ── Pulse play button ──────────────────────────────────────────────────────
 

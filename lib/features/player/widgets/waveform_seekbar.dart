@@ -21,21 +21,21 @@ class WaveformSeekbar extends ConsumerWidget {
         // track
         trackHeight:          4,
         activeTrackColor:     AppColors.theme,
-        inactiveTrackColor:   Colors.white.withOpacity(0.12),
+        inactiveTrackColor:   Colors.white.withValues(alpha: 0.12),
         // thumb
         thumbColor:           AppColors.theme,
         thumbShape:           const RoundSliderThumbShape(
           enabledThumbRadius: 7,
         ),
         // overlay shown while dragging
-        overlayColor:         AppColors.theme.withOpacity(0.2),
+        overlayColor:         AppColors.theme.withValues(alpha: 0.2),
         overlayShape:         const RoundSliderOverlayShape(
           overlayRadius: 16,
         ),
         // no tick marks
         tickMarkShape:        SliderTickMarkShape.noTickMark,
         // value indicator (tooltip while dragging)
-        showValueIndicator:   ShowValueIndicator.always,
+        showValueIndicator:   ShowValueIndicator.onDrag,
         valueIndicatorShape:  const PaddleSliderValueIndicatorShape(),
         valueIndicatorColor:  AppColors.theme,
         valueIndicatorTextStyle: const TextStyle(

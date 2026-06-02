@@ -1,12 +1,13 @@
 Next updates:
 
-1. When the last song of the playlist is playing, and when it stop (when on no repeat), the play/pause button stay on play, and the progress bar stay full (it should reset the progress bar and toggle the button to pause)
-2. When pressing the back button to leave the app, the music shouldn't stop (it should continue playing in background), it should only stop if the user explicitely close the app from recents apps.
-3. There's no notification for the app (like Spotify, user can play/pause, next/prev via the permanent notification), and the paying notification should only exist if a song is playing or is paused, it should be removed when the app is closed or removed from recent apps.
-4. Completely remove the wave animation from full screen player, instead display one big music icon (with AppColors.theme), but kep the wave animation inside the mini player
 5. The wave animation should be on stop if the player isn't playing or if the current song is paused (same for the mini player)
 6. The progress bar, change to a slider instead (the default progress bar for music app), make it polished and good looking, and don't forget, the slider dot is at the current position of the song, the played part is colored with AppColors.theme (same with slider dot) and the remaining part is gray color
 7. Fix the add to favorite button, it isn't working.
 8. The button to shuffle the playlit isn't working, when I press the next button, it still play in order instead of playing a random song from the current playlist.
 9. The section "PLAYING FROM" should actually display the name of the playlist instead of the seed data "AfroBeats 2025". It the song isn't from a playlist, display something like "Phone storage"
 10. Actually display the tap when clicking on buttons, it's too flat, bad UX. When tapping/clicking on every button, there should be a visual feedback for the user to know that he cliccked somewhere (buttons especially)
+
+
+   info • Unnecessary override. Try adding behavior in the overriding member or removing the override • lib/features/player/widgets/full_player.dart:442:8 • unnecessary_overrides
+19 issues found. (ran in 10.3s)
+Error: Process completed with exit code 1.
