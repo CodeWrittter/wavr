@@ -2,62 +2,64 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/player_provider.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_fonts.dart';
 
 class WaveformSeekbar extends ConsumerWidget {
   const WaveformSeekbar({super.key});
 
-  static const _heights = [
-    10.0, 16.0, 22.0, 14.0, 28.0, 20.0, 30.0, 18.0, 32.0, 24.0,
-    26.0, 16.0, 28.0, 14.0, 22.0, 20.0, 18.0, 30.0, 24.0, 20.0,
-    16.0, 28.0, 12.0, 22.0, 26.0, 16.0, 32.0, 18.0, 24.0, 20.0,
-    18.0, 28.0, 22.0, 30.0, 14.0, 26.0, 20.0, 24.0, 18.0, 28.0,
-  ];
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final progress = ref.watch(playerProgressProvider);
-    final player   = ref.read(playerProvider.notifier);
-    final playedCount = (_heights.length * progress).floor();
+    final state    = ref.watch(playerProvider);
+    final notifier = ref.read(playerProvider.notifier);
 
-    return GestureDetector(
-      onTapDown: (d) => _seek(context, d.localPosition.dx, player),
-      onHorizontalDragUpdate: (d) =>
-          _seek(context, d.localPosition.dx, player),
-      child: SizedBox(
-        height: 40,
-        child: LayoutBuilder(
-          builder: (ctx, constraints) {
-            final barWidth =
-                (constraints.maxWidth - (_heights.length - 1) * 2) /
-                    _heights.length;
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: List.generate(_heights.length, (i) {
-                final played = i < playedCount;
-                return Container(
-                  width: barWidth,
-                  height: _heights[i],
-                  margin: i < _heights.length - 1
-                      ? const EdgeInsets.only(right: 2)
-                      : null,
-                  decoration: BoxDecoration(
-                    color: played
-                        ? AppColors.theme
-                        : AppColors.surfaceElevated,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                );
-              }),
-            );
-          },
+    final position = state.position.inMilliseconds.toDouble();
+    final duration = state.duration.inMilliseconds.toDouble();
+    final maxVal   = duration > 0 ? duration : 1.0;
+
+    return SliderTheme(
+      data: SliderTheme.of(context).copyWith(
+        // track
+        trackHeight:          4,
+        activeTrackColor:     AppColors.theme,
+        inactiveTrackColor:   Colors.white.withOpacity(0.12),
+        // thumb
+        thumbColor:           AppColors.theme,
+        thumbShape:           const RoundSliderThumbShape(
+          enabledThumbRadius: 7,
+        ),
+        // overlay shown while dragging
+        overlayColor:         AppColors.theme.withOpacity(0.2),
+        overlayShape:         const RoundSliderOverlayShape(
+          overlayRadius: 16,
+        ),
+        // no tick marks
+        tickMarkShape:        SliderTickMarkShape.noTickMark,
+        // value indicator (tooltip while dragging)
+        showValueIndicator:   ShowValueIndicator.always,
+        valueIndicatorShape:  const PaddleSliderValueIndicatorShape(),
+        valueIndicatorColor:  AppColors.theme,
+        valueIndicatorTextStyle: const TextStyle(
+          fontFamily: AppFonts.jetbrainsMono,
+          fontSize:   11,
+          fontWeight: FontWeight.w600,
+          color:      AppColors.surfaceDeep,
+        ),
+      ),
+      child: Slider(
+        value:    position.clamp(0.0, maxVal),
+        min:      0,
+        max:      maxVal,
+        label:    _format(state.position),
+        onChanged: (v) => notifier.seekTo(
+          Duration(milliseconds: v.toInt()),
         ),
       ),
     );
   }
 
-  void _seek(BuildContext ctx, double dx, PlayerNotifier player) {
-    final width = ctx.size?.width ?? 1;
-    final fraction = (dx / width).clamp(0.0, 1.0);
-    player.seekToFraction(fraction);
+  String _format(Duration d) {
+    final m = d.inMinutes.remainder(60);
+    final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return '$m:$s';
   }
 }

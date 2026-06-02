@@ -118,7 +118,7 @@ class LibraryScreen extends ConsumerWidget {
         ),
         child: Container(
           decoration: const BoxDecoration(
-            color: Color(0xFF0F0F1A),
+            color: AppColors.surfaceAlt,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
           ),
           padding: const EdgeInsets.fromLTRB(24, 20, 24, 32),
@@ -145,7 +145,7 @@ class LibraryScreen extends ConsumerWidget {
               const SizedBox(height: 16),
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF161624),
+                  color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
                       color: Colors.white.withOpacity(0.07)),
@@ -182,7 +182,7 @@ class LibraryScreen extends ConsumerWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFE8FF5A),
+                    color: AppColors.theme,
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: const Text('Create Playlist',
@@ -190,7 +190,7 @@ class LibraryScreen extends ConsumerWidget {
                     style: TextStyle(
                       fontFamily: AppFonts.outfit, fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF0A0A12),
+                      color: AppColors.surfaceDeep,
                     ),
                   ),
                 ),
@@ -854,9 +854,9 @@ class _TrackListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: const Color(0xFF080810),
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0F0F1A),
+        backgroundColor: AppColors.surfaceAlt,
         title: Text(title,
           style: const TextStyle(
             fontFamily: AppFonts.outfit,
@@ -877,7 +877,7 @@ class _TrackListScreen extends ConsumerWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator(
-                    color: Color(0xFFE8FF5A),
+                    color: AppColors.theme,
                   ));
                 }
                 final tracks = snapshot.data ?? [];
@@ -902,7 +902,7 @@ class _TrackListScreen extends ConsumerWidget {
                           Container(
                             width: 46, height: 46,
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1E1E2E),
+                              color: AppColors.surfaceElevated,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Icon(Icons.music_note_rounded,
@@ -914,7 +914,7 @@ class _TrackListScreen extends ConsumerWidget {
                               child: Container(
                                 width: 14, height: 14,
                                 decoration: const BoxDecoration(
-                                  color: Color(0xFF4CAF50),
+                                  color: AppColors.theme3,
                                   shape: BoxShape.circle,
                                 ),
                                 child: const Icon(Icons.check_rounded,

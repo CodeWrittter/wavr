@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import '../../../data/models/track.dart';
 import '../../library/providers/library_provider.dart';
 import '../../../shared/providers/offline_mode_provider.dart';
@@ -204,18 +205,26 @@ class PlayerNotifier extends Notifier<PlayerState> {
   }
 
   // ── Internal ──────────────────────────────────────────────────────────────
-
   AudioSource _buildAudioSource(Track track) {
+    final tag = MediaItem(
+      id:      track.id,
+      title:   track.title,
+      artist:  track.artist,
+      album:   track.album,
+      artUri:  track.artworkLocalPath != null
+          ? Uri.file(track.artworkLocalPath!)
+          : track.artworkUrl != null
+              ? Uri.parse(track.artworkUrl!)
+              : null,
+    );
+
     if (track.localFilePath != null) {
-      return AudioSource.file(track.localFilePath!);
+      return AudioSource.file(track.localFilePath!, tag: tag);
     }
-    // check offline mode
-    final offline = _ref.read(offlineModeProvider);
-    if (offline) {
-      throw Exception('Offline mode — track not downloaded');
-    }
+    final offline = ref.read(offlineModeProvider);
+    if (offline) throw Exception('Offline mode — track not downloaded');
     if (track.resolvedUrl != null) {
-      return AudioSource.uri(Uri.parse(track.resolvedUrl!));
+      return AudioSource.uri(Uri.parse(track.resolvedUrl!), tag: tag);
     }
     throw Exception('No audio source for track: ${track.id}');
   }
@@ -226,12 +235,22 @@ class PlayerNotifier extends Notifier<PlayerState> {
         _player.seek(Duration.zero);
         _player.play();
       case LoopMode.all:
-        skipNext();
-        if (!state.hasNext) {
+        if (state.hasNext) {
+          skipNext();
+        } else {
           play(state.queue.first, queue: state.queue);
         }
       case LoopMode.off:
-        if (state.hasNext) skipNext();
+        if (state.hasNext) {
+          skipNext();
+        } else {
+          // end of queue — reset position, stop playing
+          _player.seek(Duration.zero);
+          state = state.copyWith(
+            isPlaying: false,
+            position:  Duration.zero,
+          );
+        }
     }
   }
 }

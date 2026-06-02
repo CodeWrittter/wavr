@@ -186,44 +186,44 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
                             ),
                           ),
 
-                        // source tag
-                        Positioned(
-                          bottom: 14,
-                          left: 14,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            decoration: BoxDecoration(
-                              color: Colors.black.withValues(alpha:  0.5),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: Colors.white.withValues(alpha:  0.1),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: 6,
-                                  height: 6,
-                                  decoration: const BoxDecoration(
-                                    color: AppColors.spotify,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                                const SizedBox(width: 5),
-                                Text(
-                                  'via Spotify',
-                                  style: TextStyle(
-                                    fontFamily: AppFonts.jetbrainsMono,
-                                    fontSize: 10,
-                                    color: Colors.white.withValues(alpha:  0.6),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        // // source tag
+                        // Positioned(
+                        //   bottom: 14,
+                        //   left: 14,
+                        //   child: Container(
+                        //     padding: const EdgeInsets.symmetric(
+                        //         horizontal: 10, vertical: 5),
+                        //     decoration: BoxDecoration(
+                        //       color: Colors.black.withValues(alpha:  0.5),
+                        //       borderRadius: BorderRadius.circular(8),
+                        //       border: Border.all(
+                        //         color: Colors.white.withValues(alpha:  0.1),
+                        //       ),
+                        //     ),
+                        //     child: Row(
+                        //       mainAxisSize: MainAxisSize.min,
+                        //       children: [
+                        //         Container(
+                        //           width: 6,
+                        //           height: 6,
+                        //           decoration: const BoxDecoration(
+                        //             color: AppColors.spotify,
+                        //             shape: BoxShape.circle,
+                        //           ),
+                        //         ),
+                        //         const SizedBox(width: 5),
+                        //         Text(
+                        //           'via Spotify',
+                        //           style: TextStyle(
+                        //             fontFamily: AppFonts.jetbrainsMono,
+                        //             fontSize: 10,
+                        //             color: Colors.white.withValues(alpha:  0.6),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -422,30 +422,54 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
 
 // ── Artwork canvas ─────────────────────────────────────────────────────────
 
-class _ArtworkCanvas extends StatefulWidget {
+class _ArtworkCanvas extends StatelessWidget {
   final dynamic track;
   const _ArtworkCanvas({required this.track});
 
   @override
-  State<_ArtworkCanvas> createState() => _ArtworkCanvasState();
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end:   Alignment.bottomRight,
+          colors: [
+            AppColors.artworkDeep1,
+            AppColors.artworkDeep2,
+            AppColors.artworkDeep3,
+            AppColors.artworkDeep4,
+          ],
+        ),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // subtle background glow
+          Positioned.fill(
+            child: CustomPaint(painter: _ArtGlowPainter()),
+          ),
+          // big music icon
+          Icon(
+            Icons.music_note_rounded,
+            size:  120,
+            color: AppColors.theme,
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _ArtworkCanvasState extends State<_ArtworkCanvas>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _vizCtrl;
 
   @override
   void initState() {
     super.initState();
-    _vizCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1400),
-    )..repeat(reverse: true);
   }
 
   @override
   void dispose() {
-    _vizCtrl.dispose();
     super.dispose();
   }
 
@@ -470,11 +494,6 @@ class _ArtworkCanvasState extends State<_ArtworkCanvas>
           // radial glows
           Positioned.fill(
             child: CustomPaint(painter: _ArtGlowPainter()),
-          ),
-          // animated waveform bars
-          AnimatedBuilder(
-            animation: _vizCtrl,
-            builder: (_, _) => _WaveformViz(progress: _vizCtrl.value),
           ),
         ],
       ),

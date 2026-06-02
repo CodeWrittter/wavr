@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'providers/player_provider.dart';
 import 'widgets/full_player.dart';
 import '../../core/theme/app_fonts.dart';
+import '../../core/theme/app_colors.dart';
 
 /// Pushed as a full-screen route when the mini player is tapped.
 /// Acts as a thin shell — all state and UI live in [FullPlayerSheet].
@@ -16,7 +17,7 @@ class PlayerScreen extends ConsumerWidget {
     // nothing playing — shouldn't normally be reachable
     if (track == null) {
       return const Scaffold(
-        backgroundColor: Color(0xFF080810),
+        backgroundColor: AppColors.background,
         body: Center(
           child: Text(
             'Nothing playing',
@@ -30,7 +31,7 @@ class PlayerScreen extends ConsumerWidget {
     }
 
     return const Scaffold(
-      backgroundColor: Color(0xFF080810),
+      backgroundColor: AppColors.background,
       body: FullPlayerSheet(),
     );
   }

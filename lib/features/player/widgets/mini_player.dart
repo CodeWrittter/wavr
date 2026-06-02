@@ -72,7 +72,7 @@ class MiniPlayer extends ConsumerWidget {
                               fit: BoxFit.cover,
                             ),
                           )
-                        : const _MiniArtworkViz(),
+                        : child: _MiniArtworkViz(isPlaying: playerState.isPlaying),
                   ),
 
                   const SizedBox(width: 12),
@@ -174,7 +174,8 @@ class MiniPlayer extends ConsumerWidget {
 // ── Mini animated bars ─────────────────────────────────────────────────────
 
 class _MiniArtworkViz extends StatefulWidget {
-  const _MiniArtworkViz();
+  final bool isPlaying;
+  const _MiniArtworkViz({required this.isPlaying});
 
   @override
   State<_MiniArtworkViz> createState() => _MiniArtworkVizState();
@@ -188,9 +189,21 @@ class _MiniArtworkVizState extends State<_MiniArtworkViz>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-      vsync: this,
+      vsync:    this,
       duration: const Duration(milliseconds: 900),
-    )..repeat(reverse: true);
+    );
+    // start only if playing
+    if (widget.isPlaying) _ctrl.repeat(reverse: true);
+  }
+
+  @override
+  void didUpdateWidget(_MiniArtworkViz old) {
+    super.didUpdateWidget(old);
+    if (widget.isPlaying && !_ctrl.isAnimating) {
+      _ctrl.repeat(reverse: true);
+    } else if (!widget.isPlaying && _ctrl.isAnimating) {
+      _ctrl.stop();
+    }
   }
 
   @override

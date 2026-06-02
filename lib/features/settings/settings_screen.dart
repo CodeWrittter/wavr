@@ -330,7 +330,7 @@ class SettingsScreen extends ConsumerWidget {
                         onTap: () => showDialog(
                           context: context,
                           builder: (_) => AlertDialog(
-                            backgroundColor: const Color(0xFF0F0F1A),
+                            backgroundColor: AppColors.surfaceAlt,
                             title: const Text('Accent Color',
                               style: TextStyle(fontFamily: AppFonts.outfit,
                                   fontWeight: FontWeight.w700, color: Colors.white)),
@@ -402,7 +402,7 @@ class SettingsScreen extends ConsumerWidget {
                                     fontSize: 12, color: Colors.white.withValues(alpha:  0.35))),
                               loading: () => const SizedBox(width: 14, height: 14,
                                   child: CircularProgressIndicator(strokeWidth: 2,
-                                      color: Color(0xFFE8FF5A))),
+                                      color: AppColors.theme)),
                               error: (_, _) => const Text('? MB'),
                             ),
                             const SizedBox(width: 4),
@@ -430,7 +430,7 @@ class SettingsScreen extends ConsumerWidget {
                         onTap: () => showDialog(
                           context: context,
                           builder: (_) => AlertDialog(
-                            backgroundColor: const Color(0xFF0F0F1A),
+                            backgroundColor: AppColors.surfaceAlt,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             title: const Text('Clear Cache', style: TextStyle(
@@ -462,7 +462,7 @@ class SettingsScreen extends ConsumerWidget {
                                 },
                                 child: const Text('Clear', style: TextStyle(
                                     fontFamily: AppFonts.outfit, fontWeight: FontWeight.w700,
-                                    color: Color(0xFFFF5A5A)))),
+                                    color: AppColors.error))),
                             ],
                           ),
                         ),
@@ -909,12 +909,12 @@ class _PickerModal extends StatelessWidget {
                         margin: const EdgeInsets.only(bottom: 8),
                         decoration: BoxDecoration(
                           color: opt == current
-                              ? const Color(0xFFE8FF5A).withValues(alpha:  0.1)
-                              : const Color(0xFF161624),
+                              ? AppColors.theme.withValues(alpha:  0.1)
+                              : AppColors.surface,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color: opt == current
-                                ? const Color(0xFFE8FF5A).withValues(alpha:  0.3)
+                                ? AppColors.theme.withValues(alpha:  0.3)
                                 : Colors.white.withValues(alpha:  0.07),
                           ),
                         ),
@@ -927,7 +927,7 @@ class _PickerModal extends StatelessWidget {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 color: opt == current
-                                    ? const Color(0xFFE8FF5A)
+                                    ? AppColors.theme
                                     : Colors.white,
                               ),
                             ),
@@ -935,7 +935,7 @@ class _PickerModal extends StatelessWidget {
                             if (opt == current)
                               const Icon(
                                 Icons.check_rounded,
-                                color: Color(0xFFE8FF5A),
+                                color: AppColors.theme,
                                 size: 18,
                               ),
                           ],

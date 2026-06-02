@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import '../../core/theme/app_fonts.dart';
+import '../../core/theme/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   final Widget child;
@@ -65,11 +66,11 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildBlank() => const Scaffold(
-    backgroundColor: Color(0xFF080810),
+    backgroundColor: AppColors.background,
   );
 
   Widget _buildSplash() => Scaffold(
-    backgroundColor: const Color(0xFF080810),
+    backgroundColor: AppColors.background,
     body: FadeTransition(
       opacity: _fade,
       child: ScaleTransition(
@@ -83,10 +84,10 @@ class _SplashScreenState extends State<SplashScreen>
                 width:  100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE8FF5A).withOpacity(0.1),
+                  color: AppColors.theme.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(32),
                   border: Border.all(
-                    color: const Color(0xFFE8FF5A).withOpacity(0.3),
+                    color: AppColors.theme.withOpacity(0.3),
                     width: 1.5,
                   ),
                 ),

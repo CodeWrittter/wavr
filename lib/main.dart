@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:path/path.dart' as p;
 // import 'package:metadata_god/metadata_god.dart';
 import 'package:uuid/uuid.dart';
@@ -22,6 +23,14 @@ void main() async {
   final db    = AppDatabase();
   final queue = DownloadQueue(db: db);
   final svc   = DownloadService(db: db, queue: queue);
+
+  // init background audio service
+  await JustAudioBackground.init(
+    androidNotificationChannelId:   'com.wavr.app.channel.audio',
+    androidNotificationChannelName: 'Wavr Playback',
+    androidNotificationOngoing:     true,
+    androidStopForegroundOnPause:   true,
+  );
 
   // init notifications
   await svc.initNotifications();
