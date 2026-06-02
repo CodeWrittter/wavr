@@ -16,15 +16,15 @@ class SeedData {
       final dest  = p.join(dir.path, 'wavr', 'audio', 'test.mp3');
       await Directory(p.dirname(dest)).create(recursive: true);
 
-      final bytes = await rootBundle.load('assets/audio/test.mp3');
+      final bytes = await rootBundle.load('assets/audio/Alan Walker - Fade.mp3');
       await File(dest).writeAsBytes(bytes.buffer.asUint8List());
 
       // insert track into DB
       final dao = TrackDao(db);
       final track = Track(
         id:             const Uuid().v4(),
-        title:          'Discover',
-        artist:         'Wavr',
+        title:          'Fade [NCS Release]',
+        artist:         'Alan Walker',
         source:         TrackSource.local,
         localFilePath:  dest,
         downloadStatus: DownloadStatus.done,
