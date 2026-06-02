@@ -79,7 +79,7 @@ class PlayerNotifier extends Notifier<PlayerState> {
 
   @override
   PlayerState build() {
-    _ref = ref;
+    // _ref = ref;
     _player = AudioPlayer();
     _bindStreams();
     ref.onDispose(_player.dispose);

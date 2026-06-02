@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dart:math' as math;
+// import 'dart:math' as math;
 import '../providers/player_provider.dart';
 import 'waveform_seekbar.dart';
 import 'video_overlay.dart';
@@ -432,16 +432,6 @@ class _ArtworkCanvas extends StatefulWidget {
 
 class _ArtworkCanvasState extends State<_ArtworkCanvas>
     with SingleTickerProviderStateMixin {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
