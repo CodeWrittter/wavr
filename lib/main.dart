@@ -5,6 +5,8 @@ import 'app.dart';
 import 'services/download/download_service.dart';
 import 'data/database/app_database.dart';
 import 'services/download/download_queue.dart';
+import 'core/utils/first_launch.dart';
+import 'core/utils/seed_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
