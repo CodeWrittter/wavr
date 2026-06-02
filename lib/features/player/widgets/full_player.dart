@@ -422,9 +422,26 @@ class _FullPlayerSheetState extends ConsumerState<FullPlayerSheet>
 
 // ── Artwork canvas ─────────────────────────────────────────────────────────
 
-class _ArtworkCanvas extends StatelessWidget {
+class _ArtworkCanvas extends StatefulWidget {
   final dynamic track;
   const _ArtworkCanvas({required this.track});
+
+  @override
+  State<_ArtworkCanvas> createState() => _ArtworkCanvasState();
+}
+
+class _ArtworkCanvasState extends State<_ArtworkCanvas>
+    with SingleTickerProviderStateMixin {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -453,47 +470,6 @@ class _ArtworkCanvas extends StatelessWidget {
             Icons.music_note_rounded,
             size:  120,
             color: AppColors.theme,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ArtworkCanvasState extends State<_ArtworkCanvas>
-    with SingleTickerProviderStateMixin {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            AppColors.deepNavy,
-            AppColors.deepViolet,
-            AppColors.deepOcean,
-            AppColors.deepPurple,
-          ],
-        ),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // radial glows
-          Positioned.fill(
-            child: CustomPaint(painter: _ArtGlowPainter()),
           ),
         ],
       ),
