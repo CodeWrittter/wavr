@@ -72,7 +72,8 @@ class MiniPlayer extends ConsumerWidget {
                               fit: BoxFit.cover,
                             ),
                           )
-                        : child: _MiniArtworkViz(isPlaying: playerState.isPlaying),
+                        : _MiniArtworkViz(isPlaying: playerState.isPlaying),
+
                   ),
 
                   const SizedBox(width: 12),
