@@ -16,55 +16,57 @@ import 'core/utils/seed_data.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // init metadata_god (required before any tag read/write)
-  // MetadataGod.initialize();
-
-  // single db instance for the whole startup sequence
-  final db    = AppDatabase();
-  final queue = DownloadQueue(db: db);
-  final svc   = DownloadService(db: db, queue: queue);
-
-  // init background audio service
-  await JustAudioBackground.init(
-    androidNotificationChannelId:   'com.wavr.app.channel.audio',
-    androidNotificationChannelName: 'Wavr Playback',
-    androidNotificationOngoing:     true,
-    androidStopForegroundOnPause:   true,
-  );
-
-  // init notifications
-  await svc.initNotifications();
-
-  // first launch setup
-  if (await FirstLaunch.isFirstLaunch()) {
-    await SeedData.requestStoragePermission();
-    await SeedData.seedTestTrack(db);
-
-    // scan and insert local audio files
-    final localFiles = await SeedData.scanLocalAudio();
-    final dao        = TrackDao(db);
-    for (final path in localFiles) {
-      final name = p.basenameWithoutExtension(path);
-      await dao.insert(Track(
-        id:             const Uuid().v4(),
-        title:          name,
-        artist:         'Unknown',
-        source:         TrackSource.local,
-        localFilePath:  path,
-        downloadStatus: DownloadStatus.done,
-        addedAt:        DateTime.now(),
-      ));
-    }
-
-    await FirstLaunch.markDone();
-  }
-
-  // resume any pending downloads from previous session
-  await svc.resumeQueue();
-
   runApp(
     const ProviderScope(
       child: WavrApp(),
     ),
   );
+
+  _performStartupTasks();
+}
+
+Future<void> _performStartupTasks() async {
+  final db    = AppDatabase();
+  final queue = DownloadQueue(db: db);
+  final svc   = DownloadService(db: db, queue: queue);
+
+  try {
+    // init metadata_god (required before any tag read/write)
+    // MetadataGod.initialize();
+    
+    await JustAudioBackground.init(
+      androidNotificationChannelId:   'com.wavr.app.channel.audio',
+      androidNotificationChannelName: 'Wavr Playback',
+      androidNotificationOngoing:     true,
+      androidStopForegroundOnPause:   true,
+    );
+
+    await svc.initNotifications();
+
+    if (await FirstLaunch.isFirstLaunch()) {
+      await SeedData.requestStoragePermission();
+      await SeedData.seedTestTrack(db);
+
+      final localFiles = await SeedData.scanLocalAudio();
+      final dao        = TrackDao(db);
+      for (final path in localFiles) {
+        final name = p.basenameWithoutExtension(path);
+        await dao.insert(Track(
+          id:             const Uuid().v4(),
+          title:          name,
+          artist:         'Unknown',
+          source:         TrackSource.local,
+          localFilePath:  path,
+          downloadStatus: DownloadStatus.done,
+          addedAt:        DateTime.now(),
+        ));
+      }
+
+      await FirstLaunch.markDone();
+    }
+
+    await svc.resumeQueue();
+  } catch (_) {
+    // Startup tasks are non-blocking; app should still show UI.
+  }
 }

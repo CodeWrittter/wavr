@@ -6,8 +6,3 @@ Next updates:
 8. The button to shuffle the playlit isn't working, when I press the next button, it still play in order instead of playing a random song from the current playlist.
 9. The section "PLAYING FROM" should actually display the name of the playlist instead of the seed data "AfroBeats 2025". It the song isn't from a playlist, display something like "Phone storage"
 10. Actually display the tap when clicking on buttons, it's too flat, bad UX. When tapping/clicking on every button, there should be a visual feedback for the user to know that he cliccked somewhere (buttons especially)
-
-Analyzing wavr...                                               
-   info • Unnecessary override. Try adding behavior in the overriding member or removing the override • lib/features/player/widgets/full_player.dart:442:8 • unnecessary_overrides
-3 issues found. (ran in 9.9s)
-Error: Process completed with exit code 1.
