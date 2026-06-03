@@ -15,13 +15,18 @@ void main() async {
   // init metadata_god (required before any tag read/write)
   // MetadataGod.initialize();
 
-  // MUST be before runApp
-  // await JustAudioBackground.init(
-  //   androidNotificationChannelId:   'com.wavr.app.channel.audio',
-  //   androidNotificationChannelName: 'Wavr Playback',
-  //   androidNotificationOngoing:     true,
-  //   androidStopForegroundOnPause:   true,
-  // );
+  try {
+    await JustAudioBackground.init(
+      androidNotificationChannelId: 'com.wavr.app.channel.audio',
+      androidNotificationChannelName: 'Wavr Playback',
+      androidNotificationOngoing: true,
+      androidStopForegroundOnPause: true,
+    );
+  } catch (e, s) {
+    debugPrint('JUST_AUDIO_BACKGROUND ERROR');
+    debugPrint(e.toString());
+    debugPrint(s.toString());
+  }
 
   debugPrint("WAVR STEP 2");
 
