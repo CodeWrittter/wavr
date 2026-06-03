@@ -1,7 +1,5 @@
 Next updates:
 
-5. The wave animation should be on stop if the player isn't playing or if the current song is paused (same for the mini player)
-6. The progress bar, change to a slider instead (the default progress bar for music app), make it polished and good looking, and don't forget, the slider dot is at the current position of the song, the played part is colored with AppColors.theme (same with slider dot) and the remaining part is gray color
 7. Fix the add to favorite button, it isn't working.
 8. The button to shuffle the playlit isn't working, when I press the next button, it still play in order instead of playing a random song from the current playlist.
 9. The section "PLAYING FROM" should actually display the name of the playlist instead of the seed data "AfroBeats 2025". It the song isn't from a playlist, display something like "Phone storage"
