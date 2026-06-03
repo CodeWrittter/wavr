@@ -54,6 +54,8 @@ class _SplashScreenState extends State<SplashScreen>
       CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOutCubic),
     );
 
+    // show splash immediately — decide later whether to skip
+    _fadeCtrl.forward();
     _checkFirstLaunch();
   }
 
@@ -61,16 +63,17 @@ class _SplashScreenState extends State<SplashScreen>
     final prefs      = await SharedPreferences.getInstance();
     final splashSeen = prefs.getBool('splash_seen') ?? false;
 
-    if (!splashSeen) {
-      setState(() => _showSplash = true);
-      await _fadeCtrl.forward();
-    } else {
-      // not first launch — check if scan was done
+    if (splashSeen) {
+      // returning user — scan if needed then go straight to app
       final scanDone = prefs.getBool('scan_done') ?? false;
-      if (!scanDone) {
-        await _runScan();
-      }
-      setState(() => _ready = true);
+      if (!scanDone) await _runScan();
+      // brief pause so splash is visible
+      await Future.delayed(const Duration(milliseconds: 1200));
+      await _fadeCtrl.reverse();
+      if (mounted) setState(() => _ready = true);
+    } else {
+      // first launch — show full splash, wait for button tap
+      setState(() => _showSplash = true);
     }
   }
 
@@ -146,6 +149,7 @@ class _SplashScreenState extends State<SplashScreen>
     if (!_showSplash) {
       return const Scaffold(backgroundColor: AppColors.background);
     }
+    // always show splash while deciding
     return _buildSplash(context);
   }
 
