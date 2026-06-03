@@ -145,7 +145,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     if (_ready) return widget.child;
     if (!_showSplash) {
-      return const Scaffold(backgroundColor: Color(0xFF080810));
+      return const Scaffold(backgroundColor: AppColors.background);
     }
     return _buildSplash(context);
   }
@@ -159,7 +159,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     return Scaffold(
-      backgroundColor: const Color(0xFF080810),
+      backgroundColor: AppColors.background,
       body: FadeTransition(
         opacity: _fade,
         child: AnimatedBuilder(
@@ -295,7 +295,7 @@ class _SplashScreenState extends State<SplashScreen>
                           width:  24,
                           height: 24,
                           child:  CircularProgressIndicator(
-                            color:       AppColors.accent,
+                            color:       AppColors.theme,
                             strokeWidth: 2,
                           ),
                         ),
@@ -304,7 +304,7 @@ class _SplashScreenState extends State<SplashScreen>
                           _scanStatus,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontFamily: 'JetBrains Mono',
+                            fontFamily: AppFonts.jetbrainsMono,
                             fontSize:   11,
                             color:      Colors.white.withOpacity(0.45),
                           ),
@@ -347,13 +347,13 @@ class _SplashScreenState extends State<SplashScreen>
                               fontFamily: AppFonts.outfit,
                               fontSize:   16,
                               fontWeight: FontWeight.w800,
-                              color:      Color(0xFF0A0A12),
+                              color:      AppColors.surfaceDeep,
                             ),
                           ),
                           SizedBox(width: 10),
                           Icon(
                             Icons.arrow_forward_rounded,
-                            color: Color(0xFF0A0A12),
+                            color: AppColors.surfaceDeep,
                             size:  20,
                           ),
                         ],
