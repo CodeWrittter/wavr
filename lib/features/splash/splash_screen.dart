@@ -5,7 +5,6 @@ import 'dart:math' as math;
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_fonts.dart';
 import '../../data/database/app_database.dart';
-import '../../core/utils/first_launch.dart';
 import '../../core/utils/seed_data.dart';
 import '../../data/database/daos/track_dao.dart';
 import '../../data/models/track.dart';
@@ -32,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
   bool _ready           = false;
   bool   _scanning      = false;
   String _scanStatus    = '';
-  int    _scannedCount  = 0;
+  // int    _scannedCount  = 0;
 
   @override
   void initState() {
@@ -90,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
     setState(() {
       _scanning     = true;
       _scanStatus   = 'Requesting permission…';
-      _scannedCount = 0;
+      // _scannedCount = 0;
     });
 
     await SeedData.requestStoragePermission();
@@ -101,10 +100,10 @@ class _SplashScreenState extends State<SplashScreen>
 
     final files = await SeedData.scanWholeStorage(
       onProgress: (count, current) {
-        if (mounted) setState(() {
-          _scannedCount = count;
+        if (mounted) { setState(() {
+          // _scannedCount = count;
           _scanStatus   = 'Found $count tracks…';
-        });
+        }); }
       },
     );
 
@@ -202,7 +201,7 @@ class _SplashScreenState extends State<SplashScreen>
                   height: 120,
                   child: AnimatedBuilder(
                     animation: _waveCtrl,
-                    builder:  (_, __) => CustomPaint(
+                    builder:  (_, _) => CustomPaint(
                       painter: _WavePainter(progress: _waveCtrl.value),
                       size:    const Size(double.infinity, 120),
                     ),
@@ -306,7 +305,7 @@ class _SplashScreenState extends State<SplashScreen>
                           style: TextStyle(
                             fontFamily: AppFonts.jetbrainsMono,
                             fontSize:   11,
-                            color:      Colors.white.withOpacity(0.45),
+                            color:      Colors.white.withValues(alpha: 0.45),
                           ),
                         ),
                       ],

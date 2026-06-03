@@ -1,5 +1,6 @@
 Analyzing wavr...                                               
-warning • Unused import: '../../data/repositories/library_repository.dart'. Try removing the import directive • lib/features/library/library_screen.dart:6:8 • unused_import
-warning • Unused import: 'package:flutter_test/flutter_test.dart'. Try removing the import directive • test/widget_test.dart:1:8 • unused_import
-2 issues found. (ran in 13.2s)
+
+// warning • The value of the local variable 'w' isn't used. Try removing the variable or using it • lib/features/splash/splash_screen.dart:464:11 • unused_local_variable
+
+13 issues found. (ran in 10.5s)
 Error: Process completed with exit code 1.

@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 // import 'package:metadata_god/metadata_god.dart';
-import 'package:path/path.dart' as p;
-import 'package:uuid/uuid.dart';
 import 'app.dart';
 import 'data/database/app_database.dart';
-import 'data/database/daos/track_dao.dart';
-import 'data/models/track.dart';
 import 'services/download/download_service.dart';
 import 'services/download/download_queue.dart';
-import 'core/utils/first_launch.dart';
-import 'core/utils/seed_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

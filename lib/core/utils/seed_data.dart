@@ -9,6 +9,11 @@ import '../../data/database/daos/track_dao.dart';
 import '../../data/models/track.dart';
 
 class SeedData {
+  static const _audioExtensions = [
+    '.mp3', '.m4a', '.flac', '.wav',
+    '.aac', '.ogg', '.opus', '.wma',
+  ];
+
   static Future<void> requestStoragePermission() async {
     // Android 13+ uses READ_MEDIA_AUDIO
     final audioStatus = await Permission.audio.request();
